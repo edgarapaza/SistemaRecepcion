@@ -1,10 +1,47 @@
 package sistemasolicitudes;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.Timer;
+
 public class Main {
 
     public static void main(String[] args) {
-        frmLogin Login=new frmLogin();
+
+        JFrame f = new JFrame();
+        final JDialog dialog = new JDialog(f, "Titulo", true);
+        dialog.setUndecorated(true);
+        dialog.setLocationRelativeTo(null);
+        ImageIcon imagen = new ImageIcon("C:\\Users\\Jhonnel\\Documents\\NetBeansProjects\\SistemaSolicitudes\\src\\sistemasolicitudes\\introarp.jpg");
+
+        JLabel label1 = new JLabel(imagen);
+        dialog.setBounds(400, 200, 600, 454);
+        dialog.add(label1);
+
+        Timer timer = new Timer(3000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+                dialog.dispose();
+
+            }
+        });
+
+        timer.setRepeats(false);
+        timer.start();
+
+        dialog.setVisible(true); // if modal, application will pause here
+
+        System.out.println("Dialog closed");
+
+        //Mostrar Siguiente formulario
+        frmLogin Login = new frmLogin();
         Login.setVisible(true);
-        // Devolver un arespuesta
+        //System.exit(0);
+
     }
 
 }
