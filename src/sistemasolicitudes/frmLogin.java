@@ -206,7 +206,7 @@ public class frmLogin extends javax.swing.JFrame {
         Solicitudes.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnIngresoActionPerformed
-
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

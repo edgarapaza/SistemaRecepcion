@@ -1,13 +1,12 @@
-
 package sistemasolicitudes;
 
+import java.awt.HeadlessException;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -15,33 +14,41 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-public class ReporteEnace {
-Connection conn=null;
-public ReporteEnace()
+public class ReporteEnace
 {
-try
-{
-Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
-conn= DriverManager.getConnection("jdbc:mysql://192.168.1.100/recepcion","usuario","archivo123");
-//JOptionPane.showMessageDialog(null,"Conexión establecida");
-}
-catch (Exception ex)
-{
-    System.out.println(ex);
-}
-}
-public void ejecutarReporte(String solicitud){
-
-    try
+    Connection conn=null;
+    conexion obj = new conexion();
+    
+    public ReporteEnace()
     {
+        try
+        {
+            String user = obj.getUsuario();
+            String clave = obj.getClave();
+            String url = obj.getUrl();
+          
+            Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
+            conn= DriverManager.getConnection(url,user,clave);
+            //JOptionPane.showMessageDialog(null,"Conexión establecida");
+        }
+        catch (ClassNotFoundException ex)
+        {
+            System.out.println(ex);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    public void ejecutarReporte(String solicitud){
+    
+    try
+    {                     
         File f = new File (""); // Creamos un objeto file
-	//JOptionPane.showMessageDialog(null,f.getAbsolutePath()); // Llamamos al método que devuelve la ruta absoluta
+	
         String archivo = f.getAbsolutePath() + "\\report\\reportEnace.jasper";
-        //JOptionPane.showMessageDialog(null, archivo);
-        //String archivo = "/home/edgar/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
-        //String archivo = "C:/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
         
-       
+        //String archivo = "C:/Users/recepcion-3/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEnace.jasper";
+        
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){
             System.out.println("No se encuentra el archivo.");
@@ -62,14 +69,16 @@ public void ejecutarReporte(String solicitud){
     parametro.put("solicitud", solicitud);
     //Reporte diseñado y complidado en iReport
     JasperPrint jasperPrint= JasperFillManager.fillReport(masterReport,parametro,conn);
-    //Se lanza el View del Jasper, no termina ejecucion delñ Jasper al salir de la aplicacion
+    //Se lanza el View del Jasper, no termina ejecucion del Jasper al salir de la aplicacion
     JasperViewer jviewer = new JasperViewer(jasperPrint, false);
-    jviewer.setTitle(solicitud);
+    jviewer.setTitle("Escrituras Públicas");
     jviewer.setVisible(true);
     }
-    catch (Exception e){
+    catch (HeadlessException e){
         System.out.println(e.getMessage());
-    }
+    }   catch (JRException e) {
+        System.out.println(e.getMessage());
+        }
 }
 public void cerrar(){
     try {

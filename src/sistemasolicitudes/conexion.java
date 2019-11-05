@@ -9,30 +9,35 @@ import javax.swing.JOptionPane;
 public class conexion {
     //variables miembro
 
-    private String usuario;
-    private String clave;
-    private String url;
-    private String driverClassName;
-    private Connection conn = null;
-    private Statement estancia;
+    public static String usuario;
+    public static String clave;
+    public static String url;
+    public static String bd;
+    public static String driverClassName;
+    public static Connection conn = null;
+    public static Statement estancia;
 
 //CONSTRUCTORES
 
     //Constructor que toma los datos de conexion por medio de parametros
-    public conexion(String usuario, String clave, String url, String driverClassName) {
+    public conexion(String usuario, String clave, String url, String driverClassName, String bd) {
         this.usuario = usuario;
         this.clave = clave;
         this.url = url;
+        this.bd = bd;
         this.driverClassName = driverClassName;
     }
 
     //Constructor que crea la conexion sin parametros con unos definidos en la clase
     //(meter los datos correspondientes)
+    @SuppressWarnings("static-access")
+    
     public conexion() {
         //poner los datos apropiados
         this.usuario = "usuario";
-        this.clave = "archivo123";
-        this.url = "jdbc:mysql://192.168.1.100/recepcion";
+        this.clave = "archivo123$";
+        //this.bd = "recepcion";
+        this.url = "jdbc:mysql://192.168.0.73/recepcion";
         this.driverClassName = "com.mysql.jdbc.Driver";
     }
 
@@ -40,7 +45,7 @@ public class conexion {
     public String getClave() {
         return clave;
     }
-
+    
     public String getUrl() {
         return url;
     }
@@ -51,12 +56,11 @@ public class conexion {
 
     public Connection getConn() {
         return conn;
+    }    
+    
+     public String getbd() {
+        return bd;
     }
-
-    public String getDriverClassName() {
-        return driverClassName;
-    }
-
     //metodos para establecer los valores de conexion
     public void setClave(String clave) {
         this.clave = clave;
@@ -77,15 +81,18 @@ public class conexion {
     public void setDriverClassName(String driverClassName) {
         this.driverClassName = driverClassName;
     }
-
+    
+    public void setbd(String bd) {
+        this.bd = bd;
+    }
 //la conexion propiamente dicha
 
     public void conectar() throws SQLException {
         try {
-            Class.forName(this.driverClassName).newInstance();
+            Class.forName(this.driverClassName);
             this.conn = DriverManager.getConnection(this.url, this.usuario, this.clave);
 
-        } catch (Exception err) {
+        } catch (ClassNotFoundException err) {
            JOptionPane.showMessageDialog(null,"Error " + err.getMessage());
         }
     }
@@ -115,5 +122,9 @@ public class conexion {
     public int insertar(String inserta) throws SQLException {
         Statement st = (Statement) this.conn.createStatement();
         return st.executeUpdate(inserta);
+    }
+
+    void getConn(Connection connection) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

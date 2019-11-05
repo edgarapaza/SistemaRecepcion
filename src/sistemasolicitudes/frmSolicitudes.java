@@ -40,7 +40,6 @@ public class frmSolicitudes extends javax.swing.JFrame {
         btnExpArch = new javax.swing.JButton();
         btnExped = new javax.swing.JButton();
         btnProcNoContenc = new javax.swing.JButton();
-        btnEliminarSol = new javax.swing.JButton();
         btnBuscarSol = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         btnModificarSol = new javax.swing.JButton();
@@ -75,7 +74,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnEnace.setFont(new java.awt.Font("Tahoma", 0, 14));
+        btnEnace.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnEnace.setText("Enace");
         btnEnace.setHideActionText(true);
         btnEnace.setIconTextGap(6);
@@ -86,7 +85,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnEnace, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 220, 40));
 
-        btnEscrPubl.setFont(new java.awt.Font("Tahoma", 0, 18));
+        btnEscrPubl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEscrPubl.setText("Escrituras Publicas");
         btnEscrPubl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +94,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnEscrPubl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 240, 80));
 
-        btnPartidas.setFont(new java.awt.Font("Tahoma", 0, 18));
+        btnPartidas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPartidas.setText("Partidas");
         btnPartidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +103,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnPartidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 240, 80));
 
-        btnExpArch.setFont(new java.awt.Font("Tahoma", 0, 14));
+        btnExpArch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnExpArch.setText("Expediente Archivado");
         btnExpArch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +112,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnExpArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 220, 40));
 
-        btnExped.setFont(new java.awt.Font("Tahoma", 0, 18));
+        btnExped.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnExped.setText("Expedientes");
         btnExped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +121,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnExped, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 240, 80));
 
-        btnProcNoContenc.setFont(new java.awt.Font("Tahoma", 0, 14));
+        btnProcNoContenc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnProcNoContenc.setText("Procesos no Contenciosos");
         btnProcNoContenc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,15 +130,12 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnProcNoContenc, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 220, 40));
 
-        btnEliminarSol.setText("Eliminar Solicitud");
-        btnEliminarSol.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarSol.setText("Buscar Solicitud");
+        btnBuscarSol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarSolActionPerformed(evt);
+                btnBuscarSolActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEliminarSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 220, 40));
-
-        btnBuscarSol.setText("Buscar Solicitud");
         jPanel1.add(btnBuscarSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 220, 40));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 260, 10));
 
@@ -151,7 +147,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnModificarSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 220, 40));
 
-        btnNuevoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18));
+        btnNuevoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnNuevoUsuario.setText("Nuevo Usuario");
         btnNuevoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,11 +253,11 @@ public class frmSolicitudes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-808)/2, (screenSize.height-514)/2, 808, 514);
+        setSize(new java.awt.Dimension(808, 514));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void btnProcNoContencActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcNoContencActionPerformed
         ProNoContencioso ProcNoContenc = new ProNoContencioso(this, false);
@@ -324,10 +320,6 @@ public class frmSolicitudes extends javax.swing.JFrame {
         ProcNoContenc.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    private void btnEliminarSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarSolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarSolActionPerformed
-
     private void btnModificarSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarSolActionPerformed
         // TODO add your handling code here:
         frmModificarDatos changeDat = new frmModificarDatos(this, false);
@@ -351,9 +343,14 @@ public class frmSolicitudes extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnBuscarSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSolActionPerformed
+        // TODO add your handling code here:
+        BusquedaSolicitudes busqueda = new BusquedaSolicitudes(this, false);
+        busqueda.setVisible(true);
+    }//GEN-LAST:event_btnBuscarSolActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
                 new frmSolicitudes().setVisible(true);
             }
@@ -361,7 +358,6 @@ public class frmSolicitudes extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarSol;
-    private javax.swing.JButton btnEliminarSol;
     private javax.swing.JButton btnEnace;
     private javax.swing.JButton btnEscrPubl;
     private javax.swing.JButton btnExpArch;

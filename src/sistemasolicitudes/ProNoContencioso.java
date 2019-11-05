@@ -581,25 +581,48 @@ public final class ProNoContencioso extends javax.swing.JDialog {
 
     private void btnUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuActionPerformed
         int numero = txtNumDoc.getText().length();
-        String dni2 ="";
+        String dni2 = null;
+        
         if (numero <8){
-            JOptionPane.showMessageDialog(rootPane, "Numero de Digitos de DNI Menor que 8 Numeros");
+            JOptionPane.showMessageDialog(rootPane, "Numero de Digitos de DNI Menor que 8 Numeros y de RUC es 11");
             this.txtNumDoc.requestFocus();
         }else{
-            int dni=Integer.parseInt(txtNumDoc.getText());
+            if (numero==8)
+            {
+            String dni=this.txtNumDoc.getText();
             try{
                 con.conectar();
-                ResultSet rs=con.consulta("SELECT CONCAT(nombre,' ',apePat,' ',apeMat) AS nombre, codUsu FROM usuarios WHERE numDoc="+dni+" LIMIT 0,1;");
+               
+               
+                ResultSet rs=con.consulta("SELECT codUsu,CONCAT(nombre,' ',apePat,' ',apeMat) AS nombre FROM usuarios WHERE numDoc='"+dni+"' LIMIT 0,1;");
                 rs.next();
-                txtNom.setText(rs.getString("nombre"));
-                lblCod.setText(rs.getString("codUsu"));
+                this.txtNom.setText(rs.getString(2));
+                this.lblCod.setText(rs.getString(1));
+                con.cierraConexion();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                 dni2 = this.txtNumDoc.getText();
-                dialogNuevoUsuario p=new dialogNuevoUsuario(null, false, dni2);
+                dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
                 p.setVisible(true);
             }
-            txtPro.requestFocus();
+            
+
+        }else {if (numero==11){
+            String ruc=this.txtNumDoc.getText();
+            try{
+                con.conectar();
+                ResultSet rs=con.consulta("SELECT codUsu, apeMat from usuarios where numDoc='"+ruc+"' LIMIT 0,1;");
+                rs.next();
+                this.txtNom.setText(rs.getString(2));
+                this.lblCod.setText(rs.getString(1));
+                con.cierraConexion();
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
+                // = this.txtNunDNI.getText();
+                dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
+                p.setVisible(true);
+            }
+        }}
         }
 }//GEN-LAST:event_btnUsuActionPerformed
 
@@ -616,7 +639,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
 }//GEN-LAST:event_txtNumDocKeyPressed
 
     private void txtNumDocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumDocKeyReleased
-        if(txtNumDoc.getText().length()>7){
+        if(txtNumDoc.getText().length()>10){
             btnUsu.doClick();
         }
 }//GEN-LAST:event_txtNumDocKeyReleased

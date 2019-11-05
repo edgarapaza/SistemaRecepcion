@@ -17,14 +17,18 @@ import net.sf.jasperreports.view.JasperViewer;
 public class ReportEscrituras
 {
     Connection conn=null;
+    conexion obj = new conexion();
     
     public ReportEscrituras()
     {
         try
         {
-        
+            String user = obj.getUsuario();
+            String clave = obj.getClave();
+            String url = obj.getUrl();
+          
             Class.forName("com.mysql.jdbc.Driver"); //se carga el driver
-            conn= DriverManager.getConnection("jdbc:mysql://192.168.1.100/recepcion","usuario","archivo123");
+            conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
         catch (ClassNotFoundException ex)
@@ -40,11 +44,10 @@ public class ReportEscrituras
     try
     {                     
         File f = new File (""); // Creamos un objeto file
-	//JOptionPane.showMessageDialog(null,f.getAbsolutePath()); // Llamamos al método que devuelve la ruta absoluta
+	
         String archivo = f.getAbsolutePath() + "\\report\\reportEscritura.jasper";
-        //JOptionPane.showMessageDialog(null, archivo);
-        //String archivo = "/home/edgar/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
-        //String archivo = "C:/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
+        
+        //String archivo = "C:/Users/recepcion/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
         
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){
@@ -66,7 +69,7 @@ public class ReportEscrituras
     parametro.put("solicitud", solicitud);
     //Reporte diseñado y complidado en iReport
     JasperPrint jasperPrint= JasperFillManager.fillReport(masterReport,parametro,conn);
-    //Se lanza el View del Jasper, no termina ejecucion delñ Jasper al salir de la aplicacion
+    //Se lanza el View del Jasper, no termina ejecucion del Jasper al salir de la aplicacion
     JasperViewer jviewer = new JasperViewer(jasperPrint, false);
     jviewer.setTitle("Escrituras Públicas");
     jviewer.setVisible(true);

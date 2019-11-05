@@ -152,56 +152,56 @@ public class Expedientes extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Expedientes");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Expediente Judicial:");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Materia:");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Demandante:");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("Demandado:");
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Causante:");
 
-        txtMateria.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtMateria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtMateria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMateriaKeyPressed(evt);
             }
         });
 
-        txtDemandante.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtDemandante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDemandante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDemandanteKeyPressed(evt);
             }
         });
 
-        txtDemandado.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtDemandado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDemandado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDemandadoKeyPressed(evt);
             }
         });
 
-        txtCausante.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtCausante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtCausante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCausanteKeyPressed(evt);
             }
         });
 
-        txtExpJud.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtExpJud.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtExpJud.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtExpJudKeyPressed(evt);
@@ -263,13 +263,13 @@ public class Expedientes extends javax.swing.JDialog {
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel17.setText("Juzgado:");
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("Secretario:");
 
-        cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12));
+        cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cboxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SETIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
         cboxMes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -277,30 +277,30 @@ public class Expedientes extends javax.swing.JDialog {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel19.setText("Mes");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setText("Dia");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel20.setText("Año");
 
-        txtJuz.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtJuz.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtJuz.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtJuzKeyPressed(evt);
             }
         });
 
-        txtSec.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtSec.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSecKeyPressed(evt);
             }
         });
 
-        txtAño.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtAño.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAñoKeyPressed(evt);
@@ -318,10 +318,10 @@ public class Expedientes extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(txtOtros);
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel24.setText("Lugar:");
 
-        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtLugar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLugarKeyPressed(evt);
@@ -392,7 +392,7 @@ public class Expedientes extends javax.swing.JDialog {
                     .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -417,7 +417,7 @@ public class Expedientes extends javax.swing.JDialog {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 137, 810, -1));
 
-        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,7 +435,7 @@ public class Expedientes extends javax.swing.JDialog {
         });
         getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 130, 40));
 
-        btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,16 +444,22 @@ public class Expedientes extends javax.swing.JDialog {
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 150, 60));
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+
+        txtSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSolicitudActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 89, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
 
-        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumDocKeyPressed(evt);
@@ -467,7 +473,7 @@ public class Expedientes extends javax.swing.JDialog {
         });
         getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 58, 179, -1));
 
-        btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
         btnUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -476,7 +482,7 @@ public class Expedientes extends javax.swing.JDialog {
         });
         getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 57, -1, -1));
 
-        txtNom.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtNom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomKeyPressed(evt);
@@ -484,15 +490,15 @@ public class Expedientes extends javax.swing.JDialog {
         });
         getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 86, 380, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 89, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, -1));
 
-        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12));
+        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 113, 81, 18));
 
@@ -699,25 +705,48 @@ public class Expedientes extends javax.swing.JDialog {
 
     private void btnUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuActionPerformed
         int numero = txtNumDoc.getText().length();
-        String dni2 ="";
+        String dni2 = null;
+        
         if (numero <8){
-            JOptionPane.showMessageDialog(rootPane, "Numero de Digitos de DNI Menor que 8 Numeros");
+            JOptionPane.showMessageDialog(rootPane, "Numero de Digitos de DNI Menor que 8 Numeros y de RUC es 11");
             this.txtNumDoc.requestFocus();
         }else{
-            int dni=Integer.parseInt(txtNumDoc.getText());
+            if (numero==8)
+            {
+            String dni=this.txtNumDoc.getText();
             try{
                 con.conectar();
-                ResultSet rs=con.consulta("SELECT CONCAT(nombre,' ',apePat,' ',apeMat) AS nombre, codUsu FROM usuarios WHERE numDoc="+dni+" LIMIT 0,1;");
+               
+               
+                ResultSet rs=con.consulta("SELECT codUsu,CONCAT(nombre,' ',apePat,' ',apeMat) AS nombre FROM usuarios WHERE numDoc='"+dni+"' LIMIT 0,1;");
                 rs.next();
-                txtNom.setText(rs.getString("nombre"));
-                lblCod.setText(rs.getString("codUsu"));
+                this.txtNom.setText(rs.getString(2));
+                this.lblCod.setText(rs.getString(1));
+                con.cierraConexion();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                 dni2 = this.txtNumDoc.getText();
-                dialogNuevoUsuario p=new dialogNuevoUsuario(null, false, dni2);
+                dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
                 p.setVisible(true);
             }
-            txtExpJud.requestFocus();
+            
+
+        }else {if (numero==11){
+            String ruc=this.txtNumDoc.getText();
+            try{
+                con.conectar();
+                ResultSet rs=con.consulta("SELECT codUsu, apeMat from usuarios where numDoc='"+ruc+"' LIMIT 0,1;");
+                rs.next();
+                this.txtNom.setText(rs.getString(2));
+                this.lblCod.setText(rs.getString(1));
+                con.cierraConexion();
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
+                // = this.txtNunDNI.getText();
+                dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
+                p.setVisible(true);
+            }
+        }}
         }
 }//GEN-LAST:event_btnUsuActionPerformed
 
@@ -812,6 +841,10 @@ public class Expedientes extends javax.swing.JDialog {
         String solicitudD = JOptionPane.showInputDialog("Escriba el Numero de Solicitud");
         jasper.ejecutarReporte(solicitudD);
 }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSolicitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSolicitudActionPerformed
 
     /**
     * @param args the command line arguments

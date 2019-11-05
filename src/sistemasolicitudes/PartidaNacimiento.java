@@ -166,19 +166,19 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(619, 205));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Partida de:");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Municipalidad de:");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Nombre:");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("Esposa:");
 
-        cboxPartida.setFont(new java.awt.Font("Tahoma", 0, 12));
+        cboxPartida.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cboxPartida.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "NACIMIENTO", "MATRIMONIO", "DEFUNCION" }));
         cboxPartida.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -191,21 +191,21 @@ public class PartidaNacimiento extends javax.swing.JDialog {
             }
         });
 
-        txtTitu1.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtTitu1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTitu1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTitu1KeyPressed(evt);
             }
         });
 
-        txtTitu2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtTitu2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtTitu2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTitu2KeyPressed(evt);
             }
         });
 
-        txtMun.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtMun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMun.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMunKeyPressed(evt);
@@ -256,10 +256,10 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel16.setText("Fecha de Nacimiento:");
 
-        cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12));
+        cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cboxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SETIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
         cboxMes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -267,16 +267,16 @@ public class PartidaNacimiento extends javax.swing.JDialog {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel19.setText("Mes");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setText("Dia");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel20.setText("Año");
 
-        txtAño.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtAño.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAñoKeyPressed(evt);
@@ -289,7 +289,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         txtOtros.setRows(5);
         jScrollPane1.setViewportView(txtOtros);
 
-        txtDia.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDiaKeyPressed(evt);
@@ -378,7 +378,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 130, 40));
 
-        btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,21 +386,27 @@ public class PartidaNacimiento extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 11, 139, 62));
+
+        txtSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSolicitudActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 11, 89, -1));
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 11, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Partidas");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, 230, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 47, -1, -1));
 
-        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumDocKeyPressed(evt);
@@ -414,7 +420,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         });
         getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 47, 120, 21));
 
-        btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
         btnUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,7 +429,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         });
         getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 41, -1, -1));
 
-        txtNom.setFont(new java.awt.Font("Tahoma", 0, 14));
+        txtNom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomKeyPressed(evt);
@@ -431,15 +437,15 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         });
         getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 81, 460, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 81, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 108, -1, -1));
 
-        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12));
+        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 105, 81, 18));
 
@@ -594,10 +600,10 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         int solic=0,esc=0;
         try{
             con.conectar();
-            ResultSet res=con.consulta("SELECT count(codSol) FROM solicitudes");
+            ResultSet res=con.consulta("SELECT MAX(codSol) FROM solicitudes");
             res.next();
             solic=Integer.parseInt(res.getString(1));
-            res=con.consulta("SELECT count(idSol) FROM partidas");
+            res=con.consulta("SELECT MAX(idSol) FROM partidas");
             res.next();
             esc=Integer.parseInt(res.getString(1));
             con.cierraConexion();
@@ -775,6 +781,10 @@ public class PartidaNacimiento extends javax.swing.JDialog {
         this.btnGuardar.setEnabled(false);
         this.btnImprimir.setEnabled(true);
 }//GEN-LAST:event_btnCambiarDatosActionPerformed
+
+    private void txtSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSolicitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSolicitudActionPerformed
 
     /**
     * @param args the command line arguments
