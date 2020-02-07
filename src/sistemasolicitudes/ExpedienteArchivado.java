@@ -358,11 +358,8 @@ public final class ExpedienteArchivado extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-=======
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 223, Short.MAX_VALUE)
->>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
+
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );

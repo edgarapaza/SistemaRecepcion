@@ -39,7 +39,7 @@ public class ReportEscrituras
         }
     }
     
-    public void ejecutarReporte(String solicitud){
+    public void ejecutarReporte(String solicitud) throws JRException{
     
     try
     {                     
