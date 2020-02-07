@@ -339,7 +339,11 @@ WHERE s.idSol = en.idSol AND
 				<textElement>
 					<font fontName="Serif" pdfFontName="Courier"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[Verificado por:]]></text>
+=======
+				<text><![CDATA[Calificado por:]]></text>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<staticText>
 				<reportElement x="414" y="96" width="23" height="14" uuid="348123d9-2828-4f9a-8648-5ff8aa93cd55"/>
@@ -383,7 +387,11 @@ WHERE s.idSol = en.idSol AND
 				<textElement>
 					<font fontName="Serif" pdfFontName="Courier"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[Verificado por:]]></text>
+=======
+				<text><![CDATA[Calificación]]></text>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<line>
 				<reportElement x="162" y="52" width="231" height="1" uuid="b85ed0cf-036a-43e0-a5c1-cec6b09d4b3d"/>

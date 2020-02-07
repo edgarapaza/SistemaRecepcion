@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" uri="jasperreports.sourceforge.net/xsd/jasperreport.xsd"/>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" uri="jasperreports.sourceforge.net/xsd/jasperreport.xsd"/>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 </catalog>

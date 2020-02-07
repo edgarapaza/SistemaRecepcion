@@ -2,6 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="031ede2b-ceb8-4a3c-9181-33b6e97ac05d">
 	<property name="ireport.zoom" value="1.2100000000000022"/>
 	<property name="ireport.x" value="0"/>
+<<<<<<< HEAD
 	<property name="ireport.y" value="357"/>
 	<subDataset name="Recepcion" uuid="50165671-39fd-429b-8980-6ce6d0d6efa3">
 		<queryString language="SQL">
@@ -11,6 +12,17 @@ ex.juzgado, ex.nomSec, ex.Lugar, ex.dia, ex.mes, ex.anio, ex.obs
 FROM solicitudes AS s, usuarios AS u,expedientes AS ex
 WHERE s.idSol = ex.idSol AND
       s.codUsu = u.codUsu AND
+=======
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Recepcion" uuid="50165671-39fd-429b-8980-6ce6d0d6efa3">
+		<queryString language="SQL">
+			<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codDis, u.numDoc
+, u.direccion, ex.tipExpJud, ex.materia, ex.demandante, ex.demandado, ex.causante,
+ex.juzgado, ex.nomSec, ex.Lugar, ex.dia, ex.mes, ex.anio, ex.obs
+FROM solicitudes AS s, usuarios AS u,expedientes AS ex
+WHERE s.idSol = ex.idSol AND
+      s.codUsu = u.codUsu AND
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
       s.codSol = 22;]]>
 		</queryString>
 		<field name="codSol" class="java.lang.Integer">
@@ -547,7 +559,11 @@ WHERE s.idSol = ex.idSol AND
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[Verificado por:]]></text>
+=======
+				<text><![CDATA[Calificado por:]]></text>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<line>
 				<reportElement x="137" y="69" width="267" height="1" uuid="7c02387c-cd6d-4541-8784-b2230743addd"/>

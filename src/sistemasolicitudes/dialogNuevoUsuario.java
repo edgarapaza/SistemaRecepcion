@@ -80,7 +80,11 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+=======
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +92,11 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+=======
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,14 +104,22 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+=======
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         jLabel1.setText("REGISTRAR NUEVO USUARIO");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del Solicitante:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel1.setToolTipText("Datos del Solicitante");
         jPanel1.setName("datos"); // NOI18N
 
+<<<<<<< HEAD
         txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumDocKeyPressed(evt);
@@ -116,6 +132,7 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
 
@@ -123,29 +140,50 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         jLabel6.setText("Apellido Materno:");
 
         txtNom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel4.setText("N° Documento:");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel6.setText("Apellido Materno:");
+
+        txtNom.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomKeyPressed(evt);
             }
         });
 
+<<<<<<< HEAD
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Nombres:");
 
         txtApeMat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel7.setText("Nombres:");
+
+        txtApeMat.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         txtApeMat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtApeMatKeyPressed(evt);
             }
         });
 
+<<<<<<< HEAD
         txtApePat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        txtApePat.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         txtApePat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtApePatKeyPressed(evt);
             }
         });
 
+<<<<<<< HEAD
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Apellido Paterno:");
 
@@ -159,6 +197,16 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 cboxTipoDocumActionPerformed(evt);
             }
         });
+=======
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel5.setText("Apellido Paterno:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel3.setText("Tipo de Documento:");
+
+        cboxTipoDocum.setFont(new java.awt.Font("Tahoma", 0, 12));
+        cboxTipoDocum.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "D.N.I.", "L.M.", "PASAPORTE", " " }));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         cboxTipoDocum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cboxTipoDocumKeyPressed(evt);
@@ -175,7 +223,11 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                         .addComponent(txtNumDoc))
+=======
+                        .addComponent(txtNumDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -183,6 +235,7 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                         .addComponent(txtApePat))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -192,6 +245,17 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNom)))
+=======
+                        .addComponent(txtApePat, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtApeMat, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNom, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -216,6 +280,7 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
+<<<<<<< HEAD
                     .addComponent(txtNom))
                 .addContainerGap())
         );
@@ -224,6 +289,16 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         jLabel8.setText("Departamento:");
 
         cboxDepart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+                    .addComponent(txtNom, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel8.setText("Departamento:");
+
+        cboxDepart.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         cboxDepart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "AMAZONAS", "ANCASH", "APURIMAC", "AREQUIPA", "AYACUCHO", "CAJAMARCA", "CALLAO", "CUSCO", "HUANCAVELICA", "HUANUCO", "ICA", "JUNIN", "LA LIBERTAD", "LAMBAYEQUE", "LIMA", "LORETO", "MADRE DE DIOS", "MOQUEGUA", "PASCO", "PIURA", "PUNO", "SAN MARTIN", "TACNA", "TUMBES", "UCAYALI" }));
         cboxDepart.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -241,7 +316,11 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         cboxProv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        cboxProv.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         cboxProv.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboxProvItemStateChanged(evt);
@@ -258,6 +337,7 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
+<<<<<<< HEAD
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Provincia:");
 
@@ -265,16 +345,32 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         jLabel10.setText("Distrito:");
 
         cboxDist.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel9.setText("Provincia:");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel10.setText("Distrito:");
+
+        cboxDist.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         cboxDist.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cboxDistKeyPressed(evt);
             }
         });
 
+<<<<<<< HEAD
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("Dirección");
 
         txtDirec.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+=======
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel12.setText("Dirección");
+
+        txtDirec.setFont(new java.awt.Font("Tahoma", 0, 12));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
         txtDirec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDirecActionPerformed(evt);
@@ -389,8 +485,13 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
         setSize(new java.awt.Dimension(656, 311));
         setLocationRelativeTo(null);
+=======
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-656)/2, (screenSize.height-311)/2, 656, 311);
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
     }// </editor-fold>//GEN-END:initComponents
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
@@ -518,10 +619,13 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtDirecActionPerformed
 
+<<<<<<< HEAD
     private void cboxTipoDocumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTipoDocumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxTipoDocumActionPerformed
 
+=======
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -2,7 +2,11 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="567" leftMargin="28" rightMargin="0" topMargin="0" bottomMargin="0" uuid="694e3242-e20f-44d6-85e2-351cbe978be3">
 	<property name="ireport.zoom" value="1.2396694214876054"/>
 	<property name="ireport.x" value="0"/>
+<<<<<<< HEAD
 	<property name="ireport.y" value="0"/>
+=======
+	<property name="ireport.y" value="42"/>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 	<subDataset name="recepcion" uuid="e1ecf3b6-ddfd-4f00-b6bc-72dc698b00d8">
 		<queryString language="SQL">
 			<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ',u.apePat,' ',u.apeMat)AS usuario, u.codDis,u.numDoc, u.direccion,
@@ -54,6 +58,7 @@ WHERE s.codUsu = u.codUsu  AND
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
 	</subDataset>
+<<<<<<< HEAD
 	<subDataset name="New Dataset 1" uuid="5e9ddbff-53e1-4d1f-b5a9-46a1179aeb86">
 		<queryString language="SQL">
 			<![CDATA[select * from solicitudes2018;]]>
@@ -77,6 +82,8 @@ WHERE s.codUsu = u.codUsu  AND
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
 	</subDataset>
+=======
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 	<parameter name="solicitud" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ',u.apePat,' ',u.apeMat)AS usuario, u.codDis,u.numDoc, u.direccion,
@@ -90,9 +97,13 @@ WHERE s.codUsu = u.codUsu  AND
 	<field name="codSol" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+<<<<<<< HEAD
 	<field name="usuario" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+=======
+	<field name="usuario" class="java.lang.String"/>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 	<field name="codDis" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -410,7 +421,11 @@ WHERE s.codUsu = u.codUsu  AND
 				<textElement>
 					<font fontName="Serif" pdfFontName="Courier"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[Verificacion:]]></text>
+=======
+				<text><![CDATA[Calificación]]></text>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<line>
 				<reportElement x="202" y="123" width="89" height="1" uuid="ea517b9c-03f6-49ee-9e27-1559086a72c8"/>
@@ -502,7 +517,11 @@ WHERE s.codUsu = u.codUsu  AND
 				<textElement>
 					<font fontName="Serif" pdfFontName="Courier"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[Verificado por:]]></text>
+=======
+				<text><![CDATA[Calificado por:]]></text>
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<line>
 				<reportElement x="164" y="83" width="231" height="1" uuid="9e676adc-7e4b-4863-b79a-1735fef4d357"/>

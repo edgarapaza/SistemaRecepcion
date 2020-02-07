@@ -140,8 +140,13 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+<<<<<<< HEAD
         jLabel7.setText("Versión 2.3");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 90, -1));
+=======
+        jLabel7.setText("Versión 2.1.2");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 120, -1));
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 
         jLabel9.setText("Desarrollado por: Ing Edgar Apaza Choque.  Area Informática");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 20));
@@ -157,11 +162,20 @@ public class frmLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 190, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 540, 10));
 
+<<<<<<< HEAD
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemasolicitudes/imagen/LogoARP Mediano.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 140, 190));
 
         setSize(new java.awt.Dimension(658, 369));
         setLocationRelativeTo(null);
+=======
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\SistemaSolicitudes\\src\\sistemasolicitudes\\imagen\\logo_recepcion.png")); // NOI18N
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 240, 150));
+
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-658)/2, (screenSize.height-369)/2, 658, 369);
+>>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
     }// </editor-fold>//GEN-END:initComponents
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String x=null,y=null,usu,pass;
