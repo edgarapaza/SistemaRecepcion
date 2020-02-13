@@ -2,8 +2,7 @@ package sistemasolicitudes;
 public class Main {
 
     public static void main(String[] args) {
-        frmLogin Login=new frmLogin();
-        Login.setVisible(true);
+        frmLogin2 log = new frmLogin2();
+        log.setVisible(true);
     }
-
 }

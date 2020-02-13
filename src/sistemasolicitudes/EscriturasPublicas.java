@@ -4,8 +4,11 @@ package sistemasolicitudes;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 public class EscriturasPublicas extends javax.swing.JDialog {
 
@@ -58,7 +61,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
             DefaultTableModel datos = new DefaultTableModel(datNot,nameColumn);
             Tabla.setModel(datos);
         }
-        public void desactiva(){
+    public void desactiva(){
             this.txtSolicitud.setText("");
             this.txtSolicitud.setEditable(false);
             this.txtNumDoc.setEditable(false);
@@ -80,7 +83,8 @@ public class EscriturasPublicas extends javax.swing.JDialog {
             this.btnImprimir.setEnabled(false);
             this.btnUsu.setEnabled(false);
         }
-         public void activa(){
+    
+    public void activa(){
             //this.txtSolicitud.setText("");
            // this.txtSolicitud.setEditable(true);
             this.txtNumDoc.setEditable(true);
@@ -102,14 +106,16 @@ public class EscriturasPublicas extends javax.swing.JDialog {
             //this.btnImprimir.setEnabled(true);
             this.btnUsu.setEnabled(true);
         }
-       public void sizeTabla(){
+    
+    public void sizeTabla(){
            Tabla.getColumnModel().getColumn(0).setMaxWidth(50);
            Tabla.getColumnModel().getColumn(1).setMaxWidth(500);
            Tabla.getColumnModel().getColumn(2).setMaxWidth(150);
            Tabla.getColumnModel().getColumn(3).setMaxWidth(80);
            Tabla.getColumnModel().getColumn(4).setMaxWidth(80);
-       }
-      public void limpiar(){
+    }
+    
+    public void limpiar(){
         txtFavor.setText("");
         txtNom.setText("");
         txtNumDoc.setText("");
@@ -200,7 +206,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Escrituras Públicas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 37, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel2.setLayout(null);
@@ -477,11 +483,11 @@ public class EscriturasPublicas extends javax.swing.JDialog {
                 txtSolicitudActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 36, 89, -1));
+        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 89, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 36, -1, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
@@ -520,11 +526,11 @@ public class EscriturasPublicas extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 46, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
         lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 46, 81, 18));
+        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 81, 18));
 
         btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
@@ -549,7 +555,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
                 btnVerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 150, -1));
+        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, 150, -1));
 
         btnChangeDat.setText("Cambiar Datos");
         btnChangeDat.addActionListener(new java.awt.event.ActionListener() {
@@ -560,10 +566,10 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         getContentPane().add(btnChangeDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 505, 130, 40));
 
         labelIdSol.setText("labelIdSol");
-        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 125, 80, -1));
+        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 80, -1));
 
         lblIdSol.setText("lblIdSol");
-        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 81, 126, -1));
+        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 126, -1));
 
         jButton1.setText("ReImprimir Solicitud");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -571,7 +577,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 150, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 110, 150, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -731,7 +737,11 @@ public class EscriturasPublicas extends javax.swing.JDialog {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         String num_sol = this.txtSolicitud.getText();
-        jasper.ejecutarReporte(num_sol);
+        try {
+            jasper.ejecutarReporte(num_sol);
+        } catch (JRException ex) {
+            Logger.getLogger(EscriturasPublicas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -943,7 +953,11 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         // TODO add your handling code here:
         String solicitudD = JOptionPane.showInputDialog("Escriba el Numero de Solicitud");
         String num_sol = solicitudD;
-        jasper.ejecutarReporte(num_sol);
+        try {
+            jasper.ejecutarReporte(num_sol);
+        } catch (JRException ex) {
+            Logger.getLogger(EscriturasPublicas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNumDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumDocActionPerformed
