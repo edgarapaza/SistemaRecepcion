@@ -31,10 +31,8 @@ public class ReporteExpArchivado
             conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
-        catch (ClassNotFoundException ex)
+        catch (ClassNotFoundException | SQLException ex)
         {
-            System.out.println(ex);
-        } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
@@ -47,7 +45,7 @@ public class ReporteExpArchivado
 	
         String archivo = f.getAbsolutePath() + "\\report\\reportExpArchivado.jasper";
         
-        //String archivo = "C:/Users/recepcion-3/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportExpArchivado.jasper";
+        //String archivo = "C:/Users/Tecnologia/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportExpArchivado.jasper";
         
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){

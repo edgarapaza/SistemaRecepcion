@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f6c2a76-4c31-4f2b-b15d-b05ccabf04cd">
-	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.zoom" value="1.4641000000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="167"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="Recepcion" uuid="9eb8d844-003c-4547-8407-52cd824c9634">
 		<queryString language="SQL">
 			<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codDis, u.numDoc, u.direccion,
@@ -56,23 +56,23 @@ WHERE s.idSol = en.idSol AND
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="47" splitType="Stretch">
+		<band height="57" splitType="Stretch">
 			<line>
-				<reportElement x="55" y="41" width="451" height="1" uuid="319690d9-da7a-4951-b05b-702e1ef8569f"/>
+				<reportElement x="55" y="49" width="470" height="1" uuid="319690d9-da7a-4951-b05b-702e1ef8569f"/>
 			</line>
 			<textField pattern="EEE, d MMM yyyy HH:mm:ss">
-				<reportElement x="356" y="21" width="131" height="17" uuid="6df87c7a-d0bf-4feb-a685-72a213f1b521"/>
+				<reportElement x="421" y="21" width="105" height="17" uuid="6df87c7a-d0bf-4feb-a685-72a213f1b521"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="70" y="8" width="219" height="18" uuid="f83183fa-9d18-499c-bca5-cc7506d903db"/>
+				<reportElement x="71" y="14" width="219" height="18" uuid="f83183fa-9d18-499c-bca5-cc7506d903db"/>
 				<textElement textAlignment="Left">
 					<font fontName="Serif" size="11" isBold="false"/>
 				</textElement>
 				<text><![CDATA[ARCHIVO GENERAL DE LA NACION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="25" width="171" height="16" uuid="e31c5589-7c52-4b5c-a082-9e93fae9678e"/>
+				<reportElement x="100" y="33" width="171" height="16" uuid="e31c5589-7c52-4b5c-a082-9e93fae9678e"/>
 				<textElement>
 					<font fontName="Serif" size="9" isBold="false"/>
 				</textElement>
@@ -89,14 +89,14 @@ WHERE s.idSol = en.idSol AND
 	<detail>
 		<band height="427" splitType="Stretch">
 			<staticText>
-				<reportElement x="357" y="2" width="76" height="20" uuid="3317f489-eb4b-4bac-bce6-48967a0b15bc"/>
+				<reportElement x="357" y="2" width="76" height="15" uuid="3317f489-eb4b-4bac-bce6-48967a0b15bc"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[N° SOLICITUD :                                         ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="431" y="0" width="89" height="22" uuid="2ee3507a-921d-4a7e-9edd-6a8e4170a2f9"/>
+				<reportElement x="427" y="-2" width="58" height="22" uuid="2ee3507a-921d-4a7e-9edd-6a8e4170a2f9"/>
 				<textElement>
 					<font size="16" isBold="true"/>
 				</textElement>
@@ -113,7 +113,7 @@ WHERE s.idSol = en.idSol AND
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="302" y="101" width="74" height="20" uuid="e57a1c4b-092e-478a-9d65-cabd3736516f"/>
+				<reportElement stretchType="RelativeToTallestObject" x="293" y="99" width="74" height="14" uuid="e57a1c4b-092e-478a-9d65-cabd3736516f"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -123,7 +123,7 @@ WHERE s.idSol = en.idSol AND
 				<reportElement x="190" y="346" width="170" height="1" uuid="c5a3f750-e8df-4f2c-8b69-73aa2ae638a6"/>
 			</line>
 			<staticText>
-				<reportElement x="77" y="65" width="450" height="28" uuid="74263c4c-cb0c-49df-9502-4f6e1410e68d"/>
+				<reportElement x="77" y="67" width="450" height="28" uuid="74263c4c-cb0c-49df-9502-4f6e1410e68d"/>
 				<textElement textAlignment="Justified">
 					<font fontName="Serif"/>
 				</textElement>
@@ -169,7 +169,7 @@ WHERE s.idSol = en.idSol AND
 				<textFieldExpression><![CDATA[$F{lugar}+","]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="159" y="101" width="91" height="20" uuid="405f6283-af21-4756-906c-3b16ef3e9173"/>
+				<reportElement stretchType="RelativeToTallestObject" x="154" y="99" width="91" height="14" uuid="405f6283-af21-4756-906c-3b16ef3e9173"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -180,7 +180,7 @@ WHERE s.idSol = en.idSol AND
 				<textElement textAlignment="Justified" verticalAlignment="Top">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Yo, "+$F{usuario}+" natural de "+$F{codDis}+ " identificado con D.N.I. N° " + $F{numDoc}+ " y con domicilio en " + $F{direccion} + "  del distrito " + $F{codDis} + ", ante Usted con el debido respeto me presento y expongo: "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                     Yo, "+$F{usuario}+" natural de "+$F{codDis}+ " identificado con D.N.I. N° " + $F{numDoc}+ " y con domicilio en " + $F{direccion} + "  del distrito " + $F{codDis} + ", ante Usted con el debido respeto me presento y expongo: "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="76" y="234" width="80" height="14" uuid="5fd1e99b-14c4-49c8-812b-6596ae40b292"/>
@@ -197,7 +197,7 @@ WHERE s.idSol = en.idSol AND
 				<text><![CDATA[Lugar y Fecha :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="162" y="234" width="386" height="28" uuid="26fbd6f2-3413-4670-ab47-8e3781387bdb"/>
+				<reportElement x="162" y="234" width="386" height="31" uuid="26fbd6f2-3413-4670-ab47-8e3781387bdb"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
@@ -266,23 +266,23 @@ WHERE s.idSol = en.idSol AND
 				<textFieldExpression><![CDATA[$F{institucion}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="135" y="101" width="18" height="14" uuid="7b215e1b-018c-4089-b72c-a1be37398190"/>
+				<reportElement x="131" y="95" width="22" height="20" uuid="7b215e1b-018c-4089-b72c-a1be37398190"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="271" y="101" width="23" height="18" uuid="94a23b81-0bc7-46cc-b9f7-e38761be074c"/>
+				<reportElement x="271" y="95" width="22" height="20" uuid="94a23b81-0bc7-46cc-b9f7-e38761be074c"/>
 			</rectangle>
 			<line>
-				<reportElement x="396" y="121" width="149" height="1" uuid="0f500707-ea92-482c-bbaa-f6dff5691aee"/>
+				<reportElement x="396" y="121" width="131" height="1" uuid="0f500707-ea92-482c-bbaa-f6dff5691aee"/>
 			</line>
 			<staticText>
-				<reportElement x="390" y="95" width="155" height="20" uuid="6895db68-37e6-4e3a-b39a-0835998a2418"/>
+				<reportElement x="395" y="95" width="132" height="18" uuid="6895db68-37e6-4e3a-b39a-0835998a2418"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Otros: Exhibicion, Constancia]]></text>
 			</staticText>
 			<textField pattern="yyyy">
-				<reportElement x="486" y="5" width="40" height="17" uuid="74a46d8c-05e3-4415-9fff-4a9f76a78a9a"/>
+				<reportElement x="485" y="2" width="40" height="15" uuid="74a46d8c-05e3-4415-9fff-4a9f76a78a9a"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
@@ -339,11 +339,7 @@ WHERE s.idSol = en.idSol AND
 				<textElement>
 					<font fontName="Serif" pdfFontName="Courier"/>
 				</textElement>
-<<<<<<< HEAD
 				<text><![CDATA[Verificado por:]]></text>
-=======
-				<text><![CDATA[Calificado por:]]></text>
->>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<staticText>
 				<reportElement x="414" y="96" width="23" height="14" uuid="348123d9-2828-4f9a-8648-5ff8aa93cd55"/>
@@ -387,11 +383,7 @@ WHERE s.idSol = en.idSol AND
 				<textElement>
 					<font fontName="Serif" pdfFontName="Courier"/>
 				</textElement>
-<<<<<<< HEAD
 				<text><![CDATA[Verificado por:]]></text>
-=======
-				<text><![CDATA[Calificación]]></text>
->>>>>>> f0e0b7b0f0e109e2d21832fb3481e5df133304f8
 			</staticText>
 			<line>
 				<reportElement x="162" y="52" width="231" height="1" uuid="b85ed0cf-036a-43e0-a5c1-cec6b09d4b3d"/>

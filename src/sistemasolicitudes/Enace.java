@@ -1,6 +1,6 @@
-
 package sistemasolicitudes;
 
+import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,16 +15,22 @@ public class Enace extends javax.swing.JDialog {
     private ReporteEnace jasper;
     /** Creates new form Enace */
 
+    /**
+     * Creates new form Enace
+     * @param parent
+     * @param modal
+     */
     public Enace(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         jasper=new ReporteEnace();
 
         txtSolicitud.setEditable(false);
-        lblIdSol.setVisible(false);
-        lblCod.setVisible(false);
+        lblIdSol.setVisible(true);
+        lblCod.setVisible(true);
         jLabel5.setVisible(false);
         labelIdSol.setVisible(false);
+        btnChangeDat.setVisible(false);
         //
         int solic=0,esc=0;
         try{
@@ -32,7 +38,7 @@ public class Enace extends javax.swing.JDialog {
                 ResultSet res=con.consulta("SELECT max(codSol) FROM solicitudes");
                 res.next();
                 solic=Integer.parseInt(res.getString(1));
-                res=con.consulta("SELECT count(idSol) FROM enace");
+                res=con.consulta("SELECT idSol FROM enace ORDER BY idSol DESC LIMIT 1;");
                 res.next();
                 esc=Integer.parseInt(res.getString(1));
                 con.cierraConexion();
@@ -152,46 +158,46 @@ public class Enace extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Enace");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Contrato Privado:");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Otorgante:");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("Favorecido:");
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Institución:");
 
-        txtOtor.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtOtor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtOtor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtOtorKeyPressed(evt);
             }
         });
 
-        txtFavor.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtFavor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtFavor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFavorKeyPressed(evt);
             }
         });
 
-        txtContrPriv.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtContrPriv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtContrPriv.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtContrPrivKeyPressed(evt);
             }
         });
 
-        txtInsti.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtInsti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtInsti.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtInstiKeyPressed(evt);
@@ -208,19 +214,19 @@ public class Enace extends javax.swing.JDialog {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtContrPriv, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                        .addComponent(txtContrPriv, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOtor, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                        .addComponent(txtOtor, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFavor, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                        .addComponent(txtFavor, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInsti, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)))
+                        .addComponent(txtInsti, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -245,20 +251,20 @@ public class Enace extends javax.swing.JDialog {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel16.setText("Lugar:");
 
-        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtLugar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtLugar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtLugarKeyPressed(evt);
             }
         });
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("Fecha de Contrato Privado:");
 
-        cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12));
+        cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cboxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SETIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
         cboxMes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -266,13 +272,13 @@ public class Enace extends javax.swing.JDialog {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel19.setText("Mes");
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setText("Dia");
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel20.setText("Año");
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -281,7 +287,7 @@ public class Enace extends javax.swing.JDialog {
         txtOtros.setRows(5);
         jScrollPane1.setViewportView(txtOtros);
 
-        txtAño.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtAño.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtAñoKeyPressed(evt);
@@ -304,7 +310,7 @@ public class Enace extends javax.swing.JDialog {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLugar, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+                        .addComponent(txtLugar, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
                     .addComponent(jLabel22)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel18)
@@ -313,12 +319,12 @@ public class Enace extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxMes, 0, 143, Short.MAX_VALUE)
+                        .addComponent(cboxMes, 0, 223, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -340,7 +346,7 @@ public class Enace extends javax.swing.JDialog {
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -361,12 +367,12 @@ public class Enace extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 144, 700, 200));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 144, 860, 200));
 
-        btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnNuevo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,7 +381,7 @@ public class Enace extends javax.swing.JDialog {
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 130, 60));
 
-        btnImprimir.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnImprimir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnImprimir.setText("Imprimir");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,25 +390,25 @@ public class Enace extends javax.swing.JDialog {
         });
         getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 130, 40));
 
-        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 130, 40));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 130, 40));
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 21, -1, -1));
-        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 19, 75, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, -1, -1));
+        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, 75, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
 
-        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumDocKeyPressed(evt);
@@ -416,7 +422,7 @@ public class Enace extends javax.swing.JDialog {
         });
         getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 58, 179, -1));
 
-        btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12));
+        btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
         btnUsu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,7 +431,7 @@ public class Enace extends javax.swing.JDialog {
         });
         getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(285, 57, -1, -1));
 
-        txtNom.setFont(new java.awt.Font("Tahoma", 0, 12));
+        txtNom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomKeyPressed(evt);
@@ -433,20 +439,20 @@ public class Enace extends javax.swing.JDialog {
         });
         getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 86, 460, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 89, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, -1));
 
-        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12));
+        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 113, 81, 18));
 
         lblIdSol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, 64, 20));
+        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, 64, 20));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -454,7 +460,7 @@ public class Enace extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 130, 40));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 370, 130, 40));
 
         btnVer.setText("Visualizar Solicitud");
         btnVer.addActionListener(new java.awt.event.ActionListener() {
@@ -462,7 +468,7 @@ public class Enace extends javax.swing.JDialog {
                 btnVerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 150, -1));
+        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 150, -1));
 
         jButton1.setText("ReImprimir Solicitud");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -470,10 +476,10 @@ public class Enace extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 50, 150, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 110, 150, -1));
 
         labelIdSol.setText("labelIdSol");
-        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 125, 80, -1));
+        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 80, -1));
 
         btnChangeDat.setText("Cambiar Datos");
         btnChangeDat.addActionListener(new java.awt.event.ActionListener() {
@@ -565,32 +571,36 @@ public class Enace extends javax.swing.JDialog {
 }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        cod = Integer.parseInt(lblCod.getText());
-        idsol =Integer.parseInt(lblIdSol.getText());
+        cod   = Integer.parseInt(lblCod.getText());
+        idsol = Integer.parseInt(lblIdSol.getText());
+        
+        num_solicitud = this.txtSolicitud.getText();
         int codTipSol=4;
         //
-        conPri = txtContrPriv.getText();
-        otor = txtOtor.getText();
-        favor = txtFavor.getText();
-        inst=txtInsti.getText();
-        lugar=txtLugar.getText();
-        dia = this.txtdia.getText();
-        mes = cboxMes.getSelectedItem().toString();
-        año = txtAño.getText();
-        otros = txtOtros.getText();
+        conPri = txtContrPriv.getText().toUpperCase();
+	otor   = txtOtor.getText().toUpperCase();
+	favor  = txtFavor.getText().toUpperCase();
+	inst   = txtInsti.getText().toUpperCase();
+	lugar  = txtLugar.getText().toUpperCase();
+	dia    = this.txtdia.getText().toUpperCase();
+	mes    = cboxMes.getSelectedItem().toString().toUpperCase();
+	año    = txtAño.getText().toUpperCase();
+	otros  = txtOtros.getText().toUpperCase();
+        
         try{
             int rpta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de guardar?","ARP Sistema",JOptionPane.YES_NO_OPTION);
             if(rpta == 0){
                 con.conectar();
-                con.insertar("INSERT INTO enace(conPri,otorgante,favorecido,institucion,lugar,dia,mes,anio,obs) "
-                        + "VALUES ('"+conPri+"','"+otor+"','"+favor+"','"+inst+"','"+lugar+"','"+dia+"','"+mes+"','"+año+"','"+otros+"');");
-                con.insertar("INSERT INTO solicitudes(codUsu,codTipSol,idSol) VALUES ('"+cod+"','"+codTipSol+"','"+idsol+"');");
-                //
+                
+                con.insertar("INSERT INTO enace (idSol,conPri,otorgante,favorecido,institucion,lugar,dia,mes,anio,obs) VALUES (null,'"+conPri+"','"+otor+"','"+favor+"','"+inst+"','"+lugar+"','"+dia+"','"+mes+"','"+año+"','"+otros+"');");             
+                con.insertar("INSERT INTO solicitudes(codSol,codUsu,codTipSol,idSol) VALUES ('"+num_solicitud+"','"+cod+"','"+codTipSol+"','"+idsol+"');");
+                
                 this.btnGuardar.setEnabled(false);
                 this.btnImprimir.setEnabled(true);
+                
                 con.cierraConexion();
             }
-        }catch(Exception e){
+        }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(rootPane, "Error Guardando. " +e);
         }
 }//GEN-LAST:event_btnGuardarActionPerformed
@@ -602,7 +612,7 @@ public class Enace extends javax.swing.JDialog {
 }//GEN-LAST:event_txtNumDocKeyPressed
 
     private void txtNumDocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumDocKeyReleased
-        if(txtNumDoc.getText().length()>10){
+        if(txtNumDoc.getText().length()>7){
             btnUsu.doClick();
         }
 }//GEN-LAST:event_txtNumDocKeyReleased

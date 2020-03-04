@@ -4,11 +4,8 @@ package sistemasolicitudes;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRException;
 
 public class EscriturasPublicas extends javax.swing.JDialog {
 
@@ -566,7 +563,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         getContentPane().add(btnChangeDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 505, 130, 40));
 
         labelIdSol.setText("labelIdSol");
-        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 80, -1));
+        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 80, -1));
 
         lblIdSol.setText("lblIdSol");
         getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 126, -1));
@@ -737,11 +734,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         String num_sol = this.txtSolicitud.getText();
-        try {
-            jasper.ejecutarReporte(num_sol);
-        } catch (JRException ex) {
-            Logger.getLogger(EscriturasPublicas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        jasper.ejecutarReporte(num_sol);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
@@ -787,7 +780,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
 }//GEN-LAST:event_txtNumDocKeyPressed
 
     private void txtNumDocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumDocKeyReleased
-        if(txtNumDoc.getText().length()>10){
+        if(txtNumDoc.getText().length()>7){
             btnUsu.doClick();
         }
 }//GEN-LAST:event_txtNumDocKeyReleased
@@ -953,11 +946,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         // TODO add your handling code here:
         String solicitudD = JOptionPane.showInputDialog("Escriba el Numero de Solicitud");
         String num_sol = solicitudD;
-        try {
-            jasper.ejecutarReporte(num_sol);
-        } catch (JRException ex) {
-            Logger.getLogger(EscriturasPublicas.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        jasper.ejecutarReporte(num_sol);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNumDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumDocActionPerformed

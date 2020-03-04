@@ -31,15 +31,13 @@ public class ReportEscrituras
             conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
-        catch (ClassNotFoundException ex)
+        catch (ClassNotFoundException | SQLException ex)
         {
-            System.out.println(ex);
-        } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
     
-    public void ejecutarReporte(String solicitud) throws JRException{
+    public void ejecutarReporte(String solicitud){
     
     try
     {                     
@@ -47,7 +45,7 @@ public class ReportEscrituras
 	
         String archivo = f.getAbsolutePath() + "\\report\\reportEscritura.jasper";
         
-        //String archivo = "C:/Users/recepcion/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
+        //String archivo = "C:/Users/Tecnologia/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
         
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){

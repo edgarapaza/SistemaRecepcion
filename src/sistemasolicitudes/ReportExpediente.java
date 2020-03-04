@@ -31,10 +31,8 @@ public class ReportExpediente
             conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
-        catch (ClassNotFoundException ex)
+        catch (ClassNotFoundException | SQLException ex)
         {
-            System.out.println(ex);
-        } catch (SQLException ex) {
             System.out.println(ex);
         }
     }

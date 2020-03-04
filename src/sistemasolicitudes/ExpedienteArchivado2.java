@@ -1,11 +1,8 @@
 package sistemasolicitudes;
 
-import javax.swing.JComboBox;
 import java.awt.event.KeyEvent;
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,8 +10,9 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     
     conexion con = new conexion();
     int idsol, codigoNotario;
-    String expArchivado, materia, otorgante, favorecido, seguido, lugar, anio, otros, dia, mes, num_solicitud, ver_solicitud, cod, obs;
-    private ReportExpediente jasper;
+    String expArchivado,tipExp, codNot, materia,juzgado, otorgante, favorecido, causante, seguido, lugar, anio, otros, dia, mes, num_solicitud, ver_solicitud, cod, obs;
+    
+    private ReporteExpArchivado jasper;
     
     notarios2 nt2 = new notarios2();
     Object[][] datNot;
@@ -25,33 +23,88 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        desactiva();
+        Desactiva();
         
+        lblIdSol.setVisible(false);
         lblcodigoUsuario.setVisible(false);
         lblCod.setVisible(false);
+        this.txtCodNot.setVisible(false);
         btnCambiarDatos.setVisible(false);
         
-        jasper = new ReportExpediente();
-        
-       
-        
-        int solic=0,esc=0;
-        try{
-                con.conectar();
-                ResultSet res=con.consulta("SELECT max(idSol) FROM escpublicas");
-                res.next();
-                solic=Integer.parseInt(res.getString(1));
-                esc=Integer.parseInt(res.getString(1));
-                con.cierraConexion();
-            }catch(SQLException e){
-                JOptionPane.showMessageDialog(rootPane, e);
-            }
-        txtSolicitud.setText(String.valueOf(solic+1));
-        lblIdSol.setText(String.valueOf(esc+1));
-        
+        jasper = new ReporteExpArchivado();  
         
     }
+    
+    private void Desactiva(){
+        this.txtSolicitud.setEnabled(false);
+        this.txtNumDoc.setEnabled(false);
+        this.txtNom.setEnabled(false);
+        this.txtExpedienteArchivado.setEnabled(false);
+        this.txtBuscaNotario.setEnabled(false);
+        this.txtNotario.setEnabled(false);
+        this.txtfecini.setEnabled(false);
+        this.txtfecfin.setEnabled(false);
+        this.txtOtorgante.setEnabled(false);
+        this.txtaFavor.setEnabled(false);
+        this.txtSeguido.setEnabled(false);
+        this.txtCausante.setEnabled(false);
+        this.txtDia.setEnabled(false);
+        this.cboxMes.setEnabled(false);
+        this.txtAño.setEnabled(false);
+        
+        this.txtOtros.setEnabled(false);
+        
+        this.btnUsu.setEnabled(false);
+        this.btnCambiarDatos.setEnabled(false);
+        this.btnGuardar.setEnabled(false);
+        this.btnImprimir.setEnabled(false);
+    }
 
+    public void activa(){
+        
+        this.txtSolicitud.setEnabled(true);
+        this.txtNumDoc.setEnabled(true);
+        this.txtNom.setEnabled(true);
+        this.txtExpedienteArchivado.setEnabled(true);
+        this.txtBuscaNotario.setEnabled(true);
+        this.txtNotario.setEnabled(true);
+        this.txtfecini.setEnabled(true);
+        this.txtfecfin.setEnabled(true);
+        this.txtOtorgante.setEnabled(true);
+        this.txtaFavor.setEnabled(true);
+        this.txtSeguido.setEnabled(true);
+        this.txtCausante.setEnabled(true);
+        this.txtDia.setEnabled(true);
+        this.cboxMes.setEnabled(true);
+        this.txtAño.setEnabled(true);
+
+        this.txtOtros.setEnabled(true);
+        
+        this.btnUsu.setEnabled(true);
+        this.btnCambiarDatos.setEnabled(false);
+        this.btnGuardar.setEnabled(true);
+        this.btnImprimir.setEnabled(true);
+        
+        this.txtSolicitud.setEnabled(false);
+    }
+    
+    public void limpiar(){
+        this.txtNumDoc.setText("");
+        this.txtNom.setText("");
+        this.lblCod.setText("");
+        this.lblIdSol.setText("");
+        this.txtExpedienteArchivado.setText("");
+        this.txtOtorgante.setText("");
+        this.txtaFavor.setText("");
+        this.txtSeguido.setText("");
+        this.txtDia.setText("");
+        this.cboxMes.setSelectedIndex(0);
+        this.txtAño.setText("");
+        this.txtOtros.setText("");
+                
+        this.btnImprimir.setEnabled(false);
+        Desactiva();
+      }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,8 +141,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         txtfecini = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtfecfin = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        txtLugar2 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
@@ -98,6 +149,10 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         txtAño = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtOtros = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtJuzgado = new javax.swing.JTextField();
         txtNumDoc = new javax.swing.JTextField();
         btnUsu = new javax.swing.JButton();
         txtNom = new javax.swing.JTextField();
@@ -119,7 +174,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, -1, -1));
 
         txtSolicitud.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -127,11 +182,11 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtSolicitudActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 89, -1));
+        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 89, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -139,15 +194,15 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("Otorgante:");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, 30));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel15.setText("A favor de:");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, 30));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Seguido por:");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, 30));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         txtOtorgante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtOtorgante.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -155,7 +210,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtOtorganteKeyPressed(evt);
             }
         });
-        jPanel5.add(txtOtorgante, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 287, 30));
+        jPanel5.add(txtOtorgante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 380, -1));
 
         txtaFavor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtaFavor.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -163,7 +218,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtaFavorKeyPressed(evt);
             }
         });
-        jPanel5.add(txtaFavor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 287, 30));
+        jPanel5.add(txtaFavor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 380, -1));
 
         txtSeguido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtSeguido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -171,7 +226,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtSeguidoKeyPressed(evt);
             }
         });
-        jPanel5.add(txtSeguido, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 287, 30));
+        jPanel5.add(txtSeguido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 380, -1));
 
         txtExpedienteArchivado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtExpedienteArchivado.setText("EXPEDIENTE ARCHIVADO");
@@ -180,22 +235,22 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtExpedienteArchivadoKeyPressed(evt);
             }
         });
-        jPanel5.add(txtExpedienteArchivado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 287, -1));
+        jPanel5.add(txtExpedienteArchivado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 287, -1));
         jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 40, -1, -1));
 
         jLabel8.setText("Causante:");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, 30));
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
         txtCausante.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCausanteKeyPressed(evt);
             }
         });
-        jPanel5.add(txtCausante, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 290, 30));
+        jPanel5.add(txtCausante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 380, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Notario:");
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         txtBuscaNotario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtBuscaNotario.addActionListener(new java.awt.event.ActionListener() {
@@ -214,13 +269,13 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtBuscaNotarioKeyTyped(evt);
             }
         });
-        jPanel5.add(txtBuscaNotario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 240, -1));
+        jPanel5.add(txtBuscaNotario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 410, -1));
 
         lblcodNot.setText("CodNot");
-        jPanel5.add(lblcodNot, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
+        jPanel5.add(lblcodNot, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, -1, -1));
 
         txtCodNot.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel5.add(txtCodNot, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 110, -1));
+        jPanel5.add(txtCodNot, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, 110, -1));
 
         Tabla.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -239,48 +294,36 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(Tabla);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 550, 110));
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 870, 110));
 
         jLabel9.setText("Notario:");
-        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         txtNotario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel5.add(txtNotario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 220, -1));
+        jPanel5.add(txtNotario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 450, -1));
 
         jLabel10.setText("Fec. Ini:");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
-        jPanel5.add(txtfecini, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 70, -1));
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, -1, -1));
+        jPanel5.add(txtfecini, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 70, -1));
 
         jLabel11.setText("Fec. Fin:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
-        jPanel5.add(txtfecfin, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 70, -1));
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel24.setText("Lugar:");
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
-
-        txtLugar2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtLugar2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLugar2KeyPressed(evt);
-            }
-        });
-        jPanel5.add(txtLugar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 220, -1));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
+        jPanel5.add(txtfecfin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 70, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setText("Dia");
-        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, -1, -1));
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
 
         txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDiaKeyPressed(evt);
             }
         });
-        jPanel5.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 35, -1));
+        jPanel5.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 35, -1));
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel19.setText("Mes");
-        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, -1, -1));
 
         cboxMes.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cboxMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SETIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" }));
@@ -289,11 +332,11 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 cboxMesKeyPressed(evt);
             }
         });
-        jPanel5.add(cboxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 110, -1));
+        jPanel5.add(cboxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 110, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel20.setText("Año");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, -1, -1));
 
         txtAño.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -301,7 +344,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtAñoKeyPressed(evt);
             }
         });
-        jPanel5.add(txtAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 80, -1));
+        jPanel5.add(txtAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 70, -1));
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
@@ -314,7 +357,23 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(txtOtros);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, 290, 60));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 350, 70));
+
+        jLabel2.setText("Tipo de Expediente:");
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel5.setText("Observaciones:");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+
+        jLabel7.setText("Juzgado:");
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, 20));
+
+        txtJuzgado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtJuzgadoKeyPressed(evt);
+            }
+        });
+        jPanel5.add(txtJuzgado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 330, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -322,17 +381,17 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 940, 460));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 950, 460));
 
         txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -346,7 +405,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtNumDocKeyTyped(evt);
             }
         });
-        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 58, 179, -1));
+        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 179, 30));
 
         btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
@@ -355,7 +414,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 btnUsuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, 40));
+        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 30));
 
         txtNom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -363,15 +422,15 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 txtNomKeyPressed(evt);
             }
         });
-        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 430, -1));
+        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 112, 470, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         lblcodigoUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblcodigoUsuario.setText("Codigo Usuario:");
-        getContentPane().add(lblcodigoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        getContentPane().add(lblcodigoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 40, -1, -1));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -380,11 +439,11 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 610, 140, 50));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 630, 140, 50));
 
         lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 81, 18));
+        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 40, 81, 18));
 
         btnImprimir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -393,10 +452,10 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 610, 140, 50));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 630, 140, 50));
 
         lblIdSol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 660, 60, 18));
+        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 680, 60, 18));
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -405,7 +464,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 150, 60));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 150, 60));
 
         btnVisulaizar.setText("Visualizar Expediente");
         btnVisulaizar.addActionListener(new java.awt.event.ActionListener() {
@@ -413,10 +472,10 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 btnVisulaizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVisulaizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 180, -1));
+        getContentPane().add(btnVisulaizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 180, 30));
 
         LabelIdSol.setText("LabelIdSol");
-        getContentPane().add(LabelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+        getContentPane().add(LabelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 680, -1, -1));
 
         btnCambiarDatos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCambiarDatos.setText("Cambiar Datos");
@@ -425,11 +484,11 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 btnCambiarDatosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 610, 170, 50));
+        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 630, 170, 50));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Expediente Archivado");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 280, -1));
 
         jButton1.setText("ReImprimir Solicitud");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -437,7 +496,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 180, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 113, 180, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -522,26 +581,29 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         cod = lblCod.getText();
         idsol =Integer.parseInt(lblIdSol.getText());
         int codTipSol = 5;
-        //
-        num_solicitud = this.txtSolicitud.getText();
-        expArchivado = txtExpedienteArchivado.getText().toUpperCase();
- 
-        otorgante = txtOtorgante.getText().toUpperCase();
-        favorecido = txtaFavor.getText().toUpperCase();
-        seguido = txtSeguido.getText().toUpperCase();
-
-        lugar = txtLugar2.getText().toUpperCase();
-        dia = this.txtDia.getText().toUpperCase();
-        mes = cboxMes.getSelectedItem().toString().toUpperCase();
-        anio = txtAño.getText();
-        otros = txtOtros.getText().toUpperCase();
+        
+        tipExp        = this.txtExpedienteArchivado.getText().toUpperCase();
+	num_solicitud = this.txtSolicitud.getText();
+	expArchivado  = this.txtExpedienteArchivado.getText().toUpperCase();
+	codNot        = this.txtCodNot.getText();
+	otorgante     = this.txtOtorgante.getText().toUpperCase();
+	favorecido    = this.txtaFavor.getText().toUpperCase();
+	seguido       = this.txtSeguido.getText().toUpperCase();
+	causante      = this.txtCausante.getText().toUpperCase();
+	juzgado       = this.txtJuzgado.getText().toUpperCase();
+	dia           = this.txtDia.getText().toUpperCase();
+	mes           = this.cboxMes.getSelectedItem().toString().toUpperCase();
+	anio          = this.txtAño.getText();
+	otros         = this.txtOtros.getText().toUpperCase();
 
         int rpta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de Guardar?","ARP Sistema",JOptionPane.YES_NO_OPTION);
         if(rpta == 0){
             try{
                 con.conectar();
-                con.insertar("INSERT INTO exparchivado VALUES (null,'"+expArchivado+"','"+ codigoNotario +"','"+otorgante+"','"+favorecido+"','','"+seguido+"','','"+lugar+"','"+dia+"','"+mes+"','"+anio+"','"+obs+"');");
+                
+                con.insertar("INSERT INTO exparchivado (tipExp,codNot,otorgante,favorecido,juzgado,seguido,causante,dia,mes,anio,obs) VALUES ('"+tipExp+"','"+codNot+"','"+otorgante+"','"+favorecido+"','"+juzgado+"','"+seguido+"','"+causante+"','"+dia+"','"+mes+"','"+anio+"','"+obs+"')");
                 con.insertar("INSERT INTO solicitudes(codSol,codUsu,codTipSol,idSol) VALUES ('"+num_solicitud+"','"+cod+"','"+codTipSol+"','"+idsol+"');");
+                
                 con.cierraConexion();
 
                 this.btnGuardar.setEnabled(false);
@@ -554,12 +616,14 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-        String num_sol = txtSolicitud.getText();
+        
+        String num_sol = this.txtSolicitud.getText();
         jasper.ejecutarReporte(num_sol);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         activa();
+        
         this.txtNumDoc.requestFocus();
         txtNumDoc.requestFocus();
         int solic=0,esc=0;
@@ -568,7 +632,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
             ResultSet res=con.consulta("SELECT max(codSol) FROM solicitudes");
             res.next();
             solic=Integer.parseInt(res.getString(1));
-            res=con.consulta("SELECT count(idSol) FROM expedientes");
+            res=con.consulta("SELECT count(idSol) FROM exparchivado");
             res.next();
             esc=Integer.parseInt(res.getString(1));
             con.cierraConexion();
@@ -588,7 +652,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         txtOtorgante.setText("");
         txtaFavor.setText("");
         txtSeguido.setText("");
-        txtLugar2.setText("");
 
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -606,17 +669,13 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
             con.conectar();
             ResultSet res = con.consulta("SELECT s.codSol,s.idSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codUsu, u.codDis, u.numDoc, u.direccion, ex.tipExpJud, ex.materia, ex.demandante, ex.demandado, ex.causante, ex.juzgado, ex.nomSec, ex.Lugar, ex.dia, ex.mes, ex.anio, ex.obs FROM solicitudes AS s, usuarios AS u,expedientes AS ex WHERE s.idSol = ex.idSol AND s.codUsu = u.codUsu AND s.codSol ="+ver_solicitud+";");
             res.next();
-            this.txtSolicitud.setText(res.getString("codSol").toString());
-            this.txtNumDoc.setText(res.getString("numDoc").toString());
+            this.txtSolicitud.setText(res.getString("codSol"));
+            this.txtNumDoc.setText(res.getString("numDoc"));
             this.txtNom.setText(res.getString("usuario"));
-
             this.txtExpedienteArchivado.setText(res.getString("tipExpJud"));
-
             this.txtOtorgante.setText(res.getString("demandante"));
             this.txtaFavor.setText(res.getString("demandado"));
             this.txtSeguido.setText(res.getString("causante"));
-
-            this.txtLugar2.setText(res.getString("lugar"));
             this.txtDia.setText(res.getString("dia"));
             this.cboxMes.setSelectedItem(res.getString("mes"));
             this.txtAño.setText(res.getString("anio"));
@@ -634,14 +693,11 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         idsol =Integer.parseInt(this.LabelIdSol.getText());   //
 
         num_solicitud = this.txtSolicitud.getText();
-
+        
         expArchivado = this.txtExpedienteArchivado.getText().toUpperCase();
-
         otorgante = this.txtOtorgante.getText().toUpperCase();
         favorecido = this.txtaFavor.getText().toUpperCase();
         seguido = this.txtSeguido.getText().toUpperCase();
-
-        lugar = this.txtLugar2.getText().toUpperCase();
         dia = this.txtDia.getText().toUpperCase();
         mes = this.cboxMes.getSelectedItem().toString();
         anio = txtAño.getText().toUpperCase();
@@ -677,7 +733,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     private void txtAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtSeguido.requestFocus();
+            this.txtJuzgado.requestFocus();
         }
     }//GEN-LAST:event_txtAñoKeyPressed
 
@@ -694,12 +750,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtDiaKeyPressed
 
-    private void txtLugar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLugar2KeyPressed
-        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtDia.requestFocus();
-        }
-    }//GEN-LAST:event_txtLugar2KeyPressed
-
     private void TablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMouseClicked
         // TODO add your handling code here:
         fila = Tabla.rowAtPoint(evt.getPoint());
@@ -710,7 +760,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
             String fecini = String.valueOf(Tabla.getValueAt(fila, 3));
             String fecfin = String.valueOf(Tabla.getValueAt(fila, 4));
             txtNotario.setText(nombre);
-            txtLugar2.setText(provincia);
             txtCodNot.setText(codigo);
             txtfecini.setText(fecini);
             txtfecfin.setText(fecfin);
@@ -782,7 +831,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     private void txtaFavorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaFavorKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtDia.requestFocus();
+            this.txtSeguido.requestFocus();
         }
     }//GEN-LAST:event_txtaFavorKeyPressed
 
@@ -795,9 +844,16 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private void txtCausanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCausanteKeyPressed
         // TODO add your handling code here:
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtOtros.requestFocus();
+            this.txtDia.requestFocus();
         }
     }//GEN-LAST:event_txtCausanteKeyPressed
+
+    private void txtJuzgadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtJuzgadoKeyPressed
+        // TODO add your handling code here:
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            this.txtOtros.requestFocus();
+        }
+    }//GEN-LAST:event_txtJuzgadoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -843,7 +899,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelIdSol;
-    private javax.swing.JTable Tabla;
+    private static javax.swing.JTable Tabla;
     private javax.swing.JButton btnCambiarDatos;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnImprimir;
@@ -860,13 +916,15 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
@@ -883,7 +941,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private javax.swing.JTextField txtCodNot;
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtExpedienteArchivado;
-    private javax.swing.JTextField txtLugar2;
+    private javax.swing.JTextField txtJuzgado;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNotario;
     private javax.swing.JTextField txtNumDoc;
@@ -896,41 +954,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private javax.swing.JTextField txtfecini;
     // End of variables declaration//GEN-END:variables
 
-    public void desactiva(){
-            this.txtSolicitud.setText("");
-            this.txtSolicitud.setEditable(false);
-            this.txtNumDoc.setEditable(false);
-            this.txtNom.setEditable(false);
-            this.btnGuardar.setEnabled(false);
-            this.btnImprimir.setEnabled(false);
-            this.btnUsu.setEnabled(false);
-        }
-   public void activa(){
-            //this.txtSolicitud.setText("");
-            this.txtSolicitud.setEditable(true);
-            this.txtNumDoc.setEditable(true);
-            this.txtNom.setEditable(true);
-            this.btnGuardar.setEnabled(true);
-
-            this.btnUsu.setEnabled(true);
-        }
-   public void limpiar(){
-        this.txtNumDoc.setText("");
-        this.txtNom.setText("");
-        this.lblCod.setText("");
-        this.lblIdSol.setText("");
-        this.txtExpedienteArchivado.setText("");
-        this.txtOtorgante.setText("");
-        this.txtaFavor.setText("");
-        this.txtSeguido.setText("");
-
-        this.txtLugar2.setText("");
-        this.txtDia.setText("");
-        this.cboxMes.setSelectedIndex(0);
-        this.txtAño.setText("");
-        this.txtOtros.setText("");
-                
-        this.btnImprimir.setEnabled(false);
-        desactiva();
-      }
+  
+   
 }
