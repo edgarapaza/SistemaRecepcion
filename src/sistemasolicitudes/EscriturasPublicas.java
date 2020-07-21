@@ -62,11 +62,10 @@ public class EscriturasPublicas extends javax.swing.JDialog {
             Tabla.setModel(datos);
         }
     public void desactiva(){
-            this.txtSolicitud.setText("");
-            this.txtSolicitud.setEditable(false);
-            this.txtNumDoc.setEditable(false);
-            this.txtNom.setEditable(false);
-
+        this.txtSolicitud.setText("");
+        this.txtSolicitud.setEditable(false);
+        this.txtNumDoc.setEditable(false);
+        this.txtNom.setEditable(false);
         this.txtFavor.setEditable(false);
         this.txtNom.setEditable(false);
         this.txtNumDoc.setEditable(false);
@@ -79,18 +78,16 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         this.txtEscrPublic.setEditable(false);
         this.txtLugar.setEditable(false);
         this.txtNotario.setEditable(false);
-            this.btnGuardar.setEnabled(false);
-            this.btnImprimir.setEnabled(false);
-            this.btnUsu.setEnabled(false);
-        }
+        this.btnGuardar.setEnabled(false);
+        this.btnImprimir.setEnabled(false);
+        this.btnUsu.setEnabled(false);
+    }
     
     public void activa(){
-            //this.txtSolicitud.setText("");
-           // this.txtSolicitud.setEditable(true);
-            this.txtNumDoc.setEditable(true);
-            this.txtNom.setEditable(true);
-
-             this.txtFavor.setEditable(true);
+                
+        this.txtNumDoc.setEditable(true);
+        this.txtNom.setEditable(true);
+        this.txtFavor.setEditable(true);
         this.txtNom.setEditable(true);
         this.txtNumDoc.setEditable(true);
         this.txtOtor.setEditable(true);
@@ -102,17 +99,17 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         this.txtEscrPublic.setEditable(true);
         this.txtLugar.setEditable(true);
         this.txtNotario.setEditable(true);
-            this.btnGuardar.setEnabled(true);
-            //this.btnImprimir.setEnabled(true);
-            this.btnUsu.setEnabled(true);
-        }
+        this.btnGuardar.setEnabled(true);
+        //this.btnImprimir.setEnabled(true);
+        this.btnUsu.setEnabled(true);
+    }
     
     public void sizeTabla(){
-           Tabla.getColumnModel().getColumn(0).setMaxWidth(50);
-           Tabla.getColumnModel().getColumn(1).setMaxWidth(500);
-           Tabla.getColumnModel().getColumn(2).setMaxWidth(150);
-           Tabla.getColumnModel().getColumn(3).setMaxWidth(80);
-           Tabla.getColumnModel().getColumn(4).setMaxWidth(80);
+        Tabla.getColumnModel().getColumn(0).setMaxWidth(50);
+        Tabla.getColumnModel().getColumn(1).setMaxWidth(500);
+        Tabla.getColumnModel().getColumn(2).setMaxWidth(150);
+        Tabla.getColumnModel().getColumn(3).setMaxWidth(80);
+        Tabla.getColumnModel().getColumn(4).setMaxWidth(80);
     }
     
     public void limpiar(){
@@ -566,7 +563,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
         getContentPane().add(btnChangeDat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 505, 130, 40));
 
         labelIdSol.setText("labelIdSol");
-        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 80, -1));
+        getContentPane().add(labelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 80, -1));
 
         lblIdSol.setText("lblIdSol");
         getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 126, -1));
@@ -787,7 +784,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
 }//GEN-LAST:event_txtNumDocKeyPressed
 
     private void txtNumDocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumDocKeyReleased
-        if(txtNumDoc.getText().length()>10){
+        if(txtNumDoc.getText().length()>7){
             btnUsu.doClick();
         }
 }//GEN-LAST:event_txtNumDocKeyReleased
@@ -830,7 +827,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                 dni2 = this.txtNumDoc.getText();
-                dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
+                dialogNuevoUsuario p=new dialogNuevoUsuario(null,true,dni2);
                 p.setVisible(true);
             }
             
@@ -847,7 +844,7 @@ public class EscriturasPublicas extends javax.swing.JDialog {
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
                 // = this.txtNunDNI.getText();
-                dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
+                dialogNuevoJuridico p=new dialogNuevoJuridico(null, true, ruc);
                 p.setVisible(true);
             }
         }}
@@ -945,8 +942,8 @@ public class EscriturasPublicas extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         actualizar_Tabla();
-       desactiva();
-       sizeTabla();
+        desactiva();
+        sizeTabla();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

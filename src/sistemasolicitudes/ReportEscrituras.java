@@ -47,7 +47,7 @@ public class ReportEscrituras
 	
         String archivo = f.getAbsolutePath() + "\\report\\reportEscritura.jasper";
         
-        //String archivo = "C:/Users/recepcion/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
+        //String archivo = "C:/Users/edgar/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportEscritura.jasper";
         
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){

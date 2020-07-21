@@ -142,7 +142,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 89, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         lblIdSol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 58, 19));
@@ -158,7 +158,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 130, 60));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 130, 60));
 
         btnImprimir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -167,7 +167,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 130, 40));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 130, 40));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -176,7 +176,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 130, 40));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 130, 40));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -354,12 +354,12 @@ public final class ProNoContencioso extends javax.swing.JDialog {
                     .addComponent(jLabel19)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 31, 370, -1));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 370, 160));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 144, 810, 220));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 144, 890, 220));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Procesos no Contenciosos");
@@ -380,7 +380,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
                 txtNomKeyPressed(evt);
             }
         });
-        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 86, 410, -1));
+        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 440, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
@@ -402,8 +402,8 @@ public final class ProNoContencioso extends javax.swing.JDialog {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
-        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 75, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 70, -1));
+        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 80, -1));
 
         btnVisulaizar.setText("Visualizar Proceso");
         btnVisulaizar.addActionListener(new java.awt.event.ActionListener() {
@@ -607,7 +607,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                 dni2 = this.txtNumDoc.getText();
-                dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
+                dialogNuevoUsuario p=new dialogNuevoUsuario(null,true,dni2);
                 p.setVisible(true);
             }
             
@@ -624,7 +624,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
                 // = this.txtNunDNI.getText();
-                dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
+                dialogNuevoJuridico p=new dialogNuevoJuridico(null, true, ruc);
                 p.setVisible(true);
             }
         }}
@@ -644,7 +644,7 @@ public final class ProNoContencioso extends javax.swing.JDialog {
 }//GEN-LAST:event_txtNumDocKeyPressed
 
     private void txtNumDocKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumDocKeyReleased
-        if(txtNumDoc.getText().length()>10){
+        if(txtNumDoc.getText().length()>7){
             btnUsu.doClick();
         }
 }//GEN-LAST:event_txtNumDocKeyReleased

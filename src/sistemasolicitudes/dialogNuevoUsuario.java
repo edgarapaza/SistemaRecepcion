@@ -3,10 +3,11 @@ package sistemasolicitudes;
 import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.JOptionPane;
 
 
 public class dialogNuevoUsuario extends javax.swing.JDialog {
-    String tipdoc, nom, apePat, apeMat, depart, prov, distr, direc, dni;
+    String tipdoc, nom, apePat, apeMat, depart, prov, distr, direc, dni, telefono, email;
     int sol;
     conexion con= new conexion();
     public dialogNuevoUsuario(java.awt.Frame parent, boolean modal) {
@@ -71,6 +72,10 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         cboxDist = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         txtDirec = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
         lblUsu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -79,39 +84,36 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 formWindowOpened(evt);
             }
         });
-
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 157, 46));
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         btnCancelar.setText("CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
-
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 39));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-
         jLabel1.setText("REGISTRAR NUEVO USUARIO");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del Solicitante:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         jPanel1.setToolTipText("Datos del Solicitante");
         jPanel1.setName("datos"); // NOI18N
-
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNumDocKeyPressed(evt);
@@ -124,7 +126,6 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
             }
         });
 
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
 
@@ -132,28 +133,23 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         jLabel6.setText("Apellido Materno:");
 
         txtNom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomKeyPressed(evt);
             }
         });
 
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Nombres:");
 
         txtApeMat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtApeMat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtApeMatKeyPressed(evt);
             }
         });
 
-
         txtApePat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtApePat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtApePatKeyPressed(evt);
@@ -173,7 +169,6 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 cboxTipoDocumActionPerformed(evt);
             }
         });
-
         cboxTipoDocum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cboxTipoDocumKeyPressed(evt);
@@ -190,9 +185,7 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-
                         .addComponent(txtNumDoc))
-
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,7 +202,6 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNom)))
-
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -238,11 +230,12 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 17, -1, -1));
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Departamento:");
 
         cboxDepart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         cboxDepart.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "AMAZONAS", "ANCASH", "APURIMAC", "AREQUIPA", "AYACUCHO", "CAJAMARCA", "CALLAO", "CUSCO", "HUANCAVELICA", "HUANUCO", "ICA", "JUNIN", "LA LIBERTAD", "LAMBAYEQUE", "LIMA", "LORETO", "MADRE DE DIOS", "MOQUEGUA", "PASCO", "PIURA", "PUNO", "SAN MARTIN", "TACNA", "TUMBES", "UCAYALI" }));
         cboxDepart.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -261,7 +254,6 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         });
 
         cboxProv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         cboxProv.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboxProvItemStateChanged(evt);
@@ -285,7 +277,6 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         jLabel10.setText("Distrito:");
 
         cboxDist.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         cboxDist.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cboxDistKeyPressed(evt);
@@ -296,7 +287,6 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         jLabel12.setText("Dirección");
 
         txtDirec.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         txtDirec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDirecActionPerformed(evt);
@@ -305,6 +295,33 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         txtDirec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDirecKeyPressed(evt);
+            }
+        });
+
+        jLabel2.setText("Telefono:");
+
+        jLabel11.setText("Email:");
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+        txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtemailKeyPressed(evt);
             }
         });
 
@@ -318,19 +335,27 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxDepart, 0, 172, Short.MAX_VALUE))
+                        .addComponent(cboxDepart, 0, 178, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxProv, 0, 204, Short.MAX_VALUE))
+                        .addComponent(cboxProv, 0, 210, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboxDist, 0, 213, Short.MAX_VALUE))
+                        .addComponent(cboxDist, 0, 219, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDirec, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDirec, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtemail))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -352,68 +377,26 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtDirec, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 17, -1, 190));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 39, 610, 229));
 
         lblUsu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lblUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 11, 54, 22));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(65, 65, 65)
-                        .addComponent(lblUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        setSize(new java.awt.Dimension(656, 311));
+        setSize(new java.awt.Dimension(663, 392));
         setLocationRelativeTo(null);
-
     }// </editor-fold>//GEN-END:initComponents
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
@@ -485,8 +468,9 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_cboxDistKeyPressed
     private void txtDirecKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDirecKeyPressed
+        
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            btnGuardar.doClick();
+            txtTelefono.requestFocus();
         }
 }//GEN-LAST:event_txtDirecKeyPressed
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -500,13 +484,16 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         prov=String.valueOf(cboxProv.getSelectedItem());
         distr=String.valueOf(cboxDist.getSelectedItem());
         direc=txtDirec.getText().toUpperCase();
+        telefono = txtTelefono.getText();
+        email = txtemail.getText().toLowerCase();
+        
         if(direc == null ? "" == null : direc.equals("")){
             JOptionPane.showMessageDialog(rootPane, "Tiene que escribir su direccion Actual");
         }else{
             try{
                 con.conectar();
-                con.insertar("INSERT INTO usuarios ( nombre, apePat, apeMat, tipDoc, numDoc, direccion, codDep, codPro, codDis) "
-                +" VALUES('"+nom+"','"+apePat+"','"+apeMat+"','"+tipdoc+"','"+dni+"','"+direc+"','"+depart+"','"+prov+"','"+distr+"');");
+                con.insertar("INSERT INTO usuarios (nombre,apePat,apeMat,tipDoc,numDoc,direccion,codDep,codPro,codDis,telefono,email) "
+                +" VALUES('"+nom+"','"+apePat+"','"+apeMat+"','"+tipdoc+"','"+dni+"','"+direc+"','"+depart+"','"+prov+"','"+distr+"','"+telefono+"','"+email+"');");
                 //con.cierraConexion();
                 dispose();
             }catch(Exception e){
@@ -546,6 +533,41 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxTipoDocumActionPerformed
 
+    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+        
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            txtemail.requestFocus();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyPressed
+
+    private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
+        // TODO add your handling code here:
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            btnGuardar.doClick();
+        }
+    }//GEN-LAST:event_txtemailKeyPressed
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        // TODO add your handling code here:
+        int n = (int)evt.getKeyChar();
+        if(n>=48 && n<=57 || n==13 || n==127){
+
+        }else{
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyReleased
+        // TODO add your handling code here:
+        if(txtTelefono.getText().length()>8){
+            txtemail.requestFocus();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyReleased
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -570,7 +592,9 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
     private javax.swing.JComboBox cboxTipoDocum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -587,5 +611,7 @@ public class dialogNuevoUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField txtDirec;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNumDoc;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
 }

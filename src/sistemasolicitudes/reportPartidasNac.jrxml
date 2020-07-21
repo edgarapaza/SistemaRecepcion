@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2bcadbdf-e0de-42f1-80cd-1e3c4e776091">
-	<property name="ireport.zoom" value="1.2100000000000022"/>
+	<property name="ireport.zoom" value="1.3310000000000026"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<subDataset name="recepcion" uuid="b5e92c00-d61e-4be2-bcf2-03140692a10d">
+	<subDataset name="Recepcion1" uuid="416fe614-03fe-4ca7-9032-5b1973bf6ea4">
 		<queryString language="SQL">
-			<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codDis, u.numDoc
-, u.direccion, p.tipPar, p.nombre1,p.nombre2,p.dia,p.mes, p.anio, p.muni, p.obs
+			<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codDis, u.numDoc, u.telefono, u.email,
+ u.direccion, p.tipPar, p.nombre1,p.nombre2,p.dia,p.mes, p.anio, p.muni, p.obs
 FROM solicitudes AS s, usuarios AS u,partidas AS p
 WHERE s.idSol = p.idSol and
       s.codUsu = u.codUsu and
-      s.codSol = 5;]]>
+      s.codSol = 42;]]>
 		</queryString>
 		<field name="codSol" class="java.lang.Integer">
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
-		<field name="usuario" class="java.lang.String"/>
+		<field name="usuario" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
 		<field name="codDis" class="java.lang.String">
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
 		<field name="numDoc" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="telefono" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="email" class="java.lang.String">
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
 		<field name="direccion" class="java.lang.String">
@@ -54,8 +62,8 @@ WHERE s.idSol = p.idSol and
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codDis, u.numDoc
-, u.direccion, p.tipPar, p.nombre1,p.nombre2,p.dia,p.mes, p.anio, p.muni, p.obs
+		<![CDATA[SELECT s.codSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codDis, u.numDoc, u.telefono, u.email,
+ u.direccion, p.tipPar, p.nombre1,p.nombre2,p.dia,p.mes, p.anio, p.muni, p.obs
 FROM solicitudes AS s, usuarios AS u,partidas AS p
 WHERE s.idSol = p.idSol and
       s.codUsu = u.codUsu and
@@ -64,11 +72,19 @@ WHERE s.idSol = p.idSol and
 	<field name="codSol" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="usuario" class="java.lang.String"/>
+	<field name="usuario" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="codDis" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="numDoc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="direccion" class="java.lang.String">
@@ -102,9 +118,9 @@ WHERE s.idSol = p.idSol and
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="72" splitType="Stretch">
+		<band height="67" splitType="Stretch">
 			<textField pattern="EEE, d MMM yyyy HH:mm:ss">
-				<reportElement x="399" y="38" width="146" height="20" uuid="526d1061-30f6-4c40-9768-3ec05192dc9e"/>
+				<reportElement x="436" y="32" width="110" height="20" uuid="526d1061-30f6-4c40-9768-3ec05192dc9e"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
@@ -118,7 +134,7 @@ WHERE s.idSol = p.idSol and
 				<text><![CDATA[ARCHIVO REGIONAL DE PUNO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="92" y="16" width="219" height="18" uuid="a50d05ea-b38d-466c-b7ca-0cc05a61dd5f"/>
+				<reportElement x="92" y="22" width="219" height="18" uuid="a50d05ea-b38d-466c-b7ca-0cc05a61dd5f"/>
 				<textElement textAlignment="Left">
 					<font fontName="Serif" size="12"/>
 				</textElement>
@@ -132,28 +148,28 @@ WHERE s.idSol = p.idSol and
 	<detail>
 		<band height="439" splitType="Stretch">
 			<staticText>
-				<reportElement x="70" y="103" width="472" height="26" uuid="01c924ca-e1cf-4b2a-94b5-ae3b9f716062"/>
+				<reportElement x="70" y="98" width="472" height="26" uuid="01c924ca-e1cf-4b2a-94b5-ae3b9f716062"/>
 				<textElement>
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<text><![CDATA[                 Que amparado en los Dispositivos Legales Vigentes, Solicito se me expida el documento de acuerdo al siguiente detalle:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="195" y="366" width="27" height="20" uuid="3cbb0ecf-2c36-4511-8344-3518a534d88d"/>
+				<reportElement x="195" y="349" width="27" height="20" uuid="3cbb0ecf-2c36-4511-8344-3518a534d88d"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
 				<text><![CDATA[Puno,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="158" y="352" width="266" height="14" uuid="1c1ed1d6-0e8b-42a1-b750-84df96c65dd6"/>
+				<reportElement x="158" y="335" width="266" height="14" uuid="1c1ed1d6-0e8b-42a1-b750-84df96c65dd6"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
 				<text><![CDATA[Ruego a Usted acceder a mi solicitud por ser justa y legal.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="157" y="338" width="100" height="14" uuid="94aee4c5-2c2e-46c7-aa54-bd208ca9009e"/>
+				<reportElement x="157" y="321" width="100" height="14" uuid="94aee4c5-2c2e-46c7-aa54-bd208ca9009e"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
@@ -167,7 +183,7 @@ WHERE s.idSol = p.idSol and
 				<text><![CDATA[FIRMA DEL SOLICITANTE]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="222" y="366" width="166" height="20" uuid="5c208915-9765-4681-aacb-e2a3563fbc4c"/>
+				<reportElement x="222" y="349" width="166" height="20" uuid="5c208915-9765-4681-aacb-e2a3563fbc4c"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
@@ -266,7 +282,7 @@ WHERE s.idSol = p.idSol and
 				<textElement>
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                Yo, 	"+$F{usuario}+" natural de "+$F{codDis}+ " identificado con D.N.I. N° " + $F{numDoc}+ " y con domicilio en " + $F{direccion} + "  del distrito " + $F{codDis} + ", ante Usted con el debido respeto me presento y expongo: "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                Yo, "+$F{usuario}+" natural de "+$F{codDis}+ " identificado con D.N.I. N° " + $F{numDoc}+ " y con domicilio en " + $F{direccion} + "  del distrito " + $F{codDis} + ", ante Usted con el debido respeto me presento y expongo: "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="364" y="8" width="80" height="15" uuid="a45ac68a-3cea-4080-99a4-b1090a935ad5"/>
@@ -276,49 +292,69 @@ WHERE s.idSol = p.idSol and
 				<text><![CDATA[N° SOLICITUD :                                         ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="447" y="4" width="46" height="25" uuid="46af18ec-dede-48d8-ab80-110c62504561"/>
+				<reportElement x="448" y="4" width="54" height="25" uuid="46af18ec-dede-48d8-ab80-110c62504561"/>
 				<textElement>
 					<font fontName="Serif" size="15" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{codSol}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="252" y="146" width="74" height="20" uuid="15b92fa8-d3ad-4090-b19c-313a2436ccdb"/>
+				<reportElement x="235" y="140" width="74" height="20" uuid="15b92fa8-d3ad-4090-b19c-313a2436ccdb"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[ Copia simple]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="106" y="146" width="91" height="20" uuid="79206b4e-84ca-4fda-bdfe-516704a20b51"/>
+				<reportElement x="106" y="140" width="91" height="20" uuid="79206b4e-84ca-4fda-bdfe-516704a20b51"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<text><![CDATA[ Copia Certificada]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="341" y="134" width="123" height="11" uuid="58d3850e-15c9-45da-aaf0-08fae4b2abd3"/>
-				<textElement>
-					<font size="7"/>
-				</textElement>
-				<text><![CDATA[Otro: Exhibición, Constanticia]]></text>
-			</staticText>
 			<rectangle>
-				<reportElement x="79" y="148" width="13" height="10" uuid="0a6fbf3f-12f7-4186-a156-69dc2e2ab254"/>
+				<reportElement x="79" y="134" width="27" height="24" uuid="0a6fbf3f-12f7-4186-a156-69dc2e2ab254"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="217" y="148" width="13" height="10" uuid="33a82fa8-78b7-4c2c-bfc6-6a19f99515af"/>
+				<reportElement x="206" y="136" width="27" height="24" uuid="33a82fa8-78b7-4c2c-bfc6-6a19f99515af"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="369" y="149" width="181" height="20" uuid="54c30784-259d-4609-abf5-d40a308d8f69"/>
-				<text><![CDATA[________________________________]]></text>
-			</staticText>
 			<textField pattern="yyyy">
-				<reportElement x="509" y="7" width="38" height="20" uuid="bd277e09-8e1b-4599-8758-e1002024ebc2"/>
+				<reportElement x="502" y="8" width="38" height="15" uuid="bd277e09-8e1b-4599-8758-e1002024ebc2"/>
 				<textElement>
 					<font fontName="Serif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="324" y="136" width="27" height="24" uuid="c985b3f5-1746-4e4a-a5c7-7ac57a92701f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="353" y="140" width="74" height="20" uuid="cbf720d5-6c9e-4801-9085-b2a80fafa4f3"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Constancia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="126" width="74" height="14" uuid="bf37c3cf-cafa-4b85-9391-997bf5904c2a"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Otro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="147" width="94" height="20" uuid="00c60a96-bf7c-4328-ae90-d5501b7b7c6f"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[___________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="77" width="450" height="20" uuid="c8649ac5-9e68-4bb2-992c-668e890c89d7"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Celular: " + $F{telefono} + "              Correo Electronico: " + $F{email}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

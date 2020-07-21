@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 
 
 public class dialogNuevoJuridico extends javax.swing.JDialog {
-String nom, dni;
-conexion con= new conexion();
+    String nom, dni, telefono, email;
+    conexion con= new conexion();
     /**
      * Creates new form dialogNuevoJuridico
      */
@@ -30,17 +30,41 @@ conexion con= new conexion();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         txtNunRuc = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txtRazSocial = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jToggleButton2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jToggleButton2.setText("CANCELAR");
+        jToggleButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 110, 30));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la Empresa / Razon Social"));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel2.setText("N° DE RUC:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 20));
+
+        txtNunRuc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtNunRuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNunRucKeyPressed(evt);
@@ -48,25 +72,60 @@ conexion con= new conexion();
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNunRucKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNunRucKeyTyped(evt);
+            }
         });
-        getContentPane().add(txtNunRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 42, 102, -1));
+        jPanel1.add(txtNunRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 102, -1));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel1.setText("RAZON SOCIAL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 83, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel1.setText("Razón Social:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, 20));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel2.setText("N° DE RUC");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 45, -1, -1));
-
+        txtRazSocial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtRazSocial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtRazSocialKeyPressed(evt);
             }
         });
-        getContentPane().add(txtRazSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 80, 255, -1));
+        jPanel1.add(txtRazSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 320, -1));
 
-        btnGuardar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel3.setText("Telefono:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        jLabel4.setText("Email:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+
+        txtTelefono.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 190, -1));
+
+        txtemail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+        txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtemailKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 320, -1));
+
+        btnGuardar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnGuardar.setText("GUARDAR");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,32 +137,29 @@ conexion con= new conexion();
                 btnGuardarKeyPressed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 110, 30));
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 160, 40));
 
-        jToggleButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jToggleButton2.setText("CANCELAR");
-        jToggleButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 110, 30));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 510, 240));
+
+        jLabel5.setText(".");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
        
-        dni=this.txtNunRuc.getText();
-        nom=txtRazSocial.getText().toUpperCase();
+        dni = txtNunRuc.getText();
+        nom = txtRazSocial.getText().toUpperCase();
+        telefono = txtTelefono.getText();
+        email = txtemail.getText().toLowerCase();
         
         if(nom == null ? "" == null : nom.equals("")){
             JOptionPane.showMessageDialog(rootPane, "Tiene que escribir la razon social");
         }else{
             try{
                 con.conectar();
-                con.insertar("INSERT INTO usuarios ( apeMat, numDoc) "+" VALUES('"+nom+"','"+dni+"');");
+                con.insertar("INSERT INTO usuarios ( apeMat, numDoc, telefono, email) "+" VALUES('"+nom+"','"+dni+"','"+telefono+"','"+email+"');");
                 //con.cierraConexion();
                 dispose();
             }catch(Exception e){
@@ -116,12 +172,18 @@ conexion con= new conexion();
          dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void txtNunRucKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNunRucKeyPressed
-              
+    private void btnGuardarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnGuardarKeyPressed
+         if(evt.getKeyCode()==KeyEvent.VK_F4){
+   dispose();
+
+}
+    }//GEN-LAST:event_btnGuardarKeyPressed
+
+    private void txtRazSocialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazSocialKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtRazSocial.requestFocus();
+            txtTelefono.requestFocus();
         }
-    }//GEN-LAST:event_txtNunRucKeyPressed
+    }//GEN-LAST:event_txtRazSocialKeyPressed
 
     private void txtNunRucKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNunRucKeyReleased
         if(txtNunRuc.getText().length()>10){
@@ -129,18 +191,57 @@ conexion con= new conexion();
         }
     }//GEN-LAST:event_txtNunRucKeyReleased
 
-    private void txtRazSocialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazSocialKeyPressed
+    private void txtNunRucKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNunRucKeyPressed
+
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            txtRazSocial.requestFocus();
+        }
+    }//GEN-LAST:event_txtNunRucKeyPressed
+
+    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            txtemail.requestFocus();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyPressed
+
+    private void txtTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyReleased
+        // TODO add your handling code here:
+        if(txtTelefono.getText().length()>8){
+            txtemail.requestFocus();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyReleased
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        // TODO add your handling code here:
+        int n = (int)evt.getKeyChar();
+        if(n>=48 && n<=57 || n==13 || n==127){
+
+        }else{
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
+        // TODO add your handling code here:
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
             btnGuardar.doClick();
-           }
-    }//GEN-LAST:event_txtRazSocialKeyPressed
+        }
+    }//GEN-LAST:event_txtemailKeyPressed
 
-    private void btnGuardarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnGuardarKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_F4){
-   dispose();
+    private void txtNunRucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNunRucKeyTyped
+        // TODO add your handling code here:
+        int n = (int)evt.getKeyChar();
+        if(n>=48 && n<=57 || n==13 || n==127){
 
-}
-    }//GEN-LAST:event_btnGuardarKeyPressed
+        }else{
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+        }
+    }//GEN-LAST:event_txtNunRucKeyTyped
 
     /**
      * @param args the command line arguments
@@ -189,8 +290,14 @@ conexion con= new conexion();
     private javax.swing.JToggleButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField txtNunRuc;
     private javax.swing.JTextField txtRazSocial;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
 }

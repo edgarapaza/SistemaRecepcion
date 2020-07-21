@@ -358,7 +358,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 123, 890, 190));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 890, 190));
 
         btnImprimir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -367,7 +367,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 140, 50));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 140, 50));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -376,7 +376,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 140, 50));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 140, 50));
 
         btnNuevo.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -385,7 +385,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 139, 62));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, 139, 62));
 
         txtSolicitud.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -393,19 +393,19 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 txtSolicitudActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 89, -1));
+        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 89, -1));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel1.setText("Partidas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -2, 240, 40));
+        jLabel1.setText("Partidas (Nacimiento, Matrimonio y Defunción)");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 580, 50));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -419,7 +419,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 txtNumDocKeyTyped(evt);
             }
         });
-        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 120, 21));
+        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 170, 21));
 
         btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
@@ -428,7 +428,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnUsuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 41, -1, 30));
+        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, 30));
 
         txtNom.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -436,22 +436,22 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 txtNomKeyPressed(evt);
             }
         });
-        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 460, -1));
+        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 460, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
 
         lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 81, 18));
+        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 81, 18));
 
         lblIdSol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 410, 51, 20));
+        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 460, 51, 20));
 
         btnVer.setText("Visualizar Partida");
         btnVer.addActionListener(new java.awt.event.ActionListener() {
@@ -459,7 +459,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnVerActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 160, -1));
+        getContentPane().add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 160, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -467,7 +467,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 340, 130, 40));
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 140, 50));
 
         jButton1.setText("ReImprimir Solicitud");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -475,10 +475,10 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 160, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 140, 160, -1));
 
         LabelIdSol.setText("LabelIdSol");
-        getContentPane().add(LabelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, -1, -1));
+        getContentPane().add(LabelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, -1, -1));
 
         btnCambiarDatos.setText("Cambiar Datos");
         btnCambiarDatos.addActionListener(new java.awt.event.ActionListener() {
@@ -486,7 +486,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
                 btnCambiarDatosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 130, 40));
+        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 140, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -662,7 +662,7 @@ public class PartidaNacimiento extends javax.swing.JDialog {
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                 dni2 = this.txtNumDoc.getText();
-                dialogNuevoUsuario p=new dialogNuevoUsuario(null, false, dni2);
+                dialogNuevoUsuario p=new dialogNuevoUsuario(null, true, dni2);
                 p.setVisible(true);
             }
             cboxPartida.requestFocus();

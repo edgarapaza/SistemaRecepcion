@@ -11,19 +11,19 @@ public class Expedientes extends javax.swing.JDialog {
     int idsol;
     String expJud, materia, demandante, demandado, causante, juz, sec, lugar, año, otros, dia, mes, num_solicitud, ver_solicitud, cod;
     private ReportExpediente jasper;
-    /** Creates new form Expedientes */
+    /** Creates new form Expedientes
+     * @param parent
+     * @param modal */
     public Expedientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         jasper = new ReportExpediente();
 
         lblIdSol.setVisible(false);
-        lblCod.setVisible(true);
-        jLabel5.setVisible(true);
+        jLabel5.setVisible(false);
+        lblCodUsuario.setVisible(false);
         LabelIdSol.setVisible(false);
-        btnCambiarDatos.setVisible(false);
-        
-       
+        btnCambiarDatos.setVisible(false);     
         
         int solic=0,esc=0;
         try{
@@ -52,29 +52,30 @@ public class Expedientes extends javax.swing.JDialog {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(rootPane, e);
             }
-        }
-   public void desactiva(){
-            this.txtSolicitud.setText("");
-            this.txtSolicitud.setEditable(false);
-            this.txtNumDoc.setEditable(false);
-            this.txtNom.setEditable(false);
-            this.btnGuardar.setEnabled(false);
-            this.btnImprimir.setEnabled(false);
-            this.btnUsu.setEnabled(false);
-        }
-   public void activa(){
-            //this.txtSolicitud.setText("");
-            this.txtSolicitud.setEditable(true);
-            this.txtNumDoc.setEditable(true);
-            this.txtNom.setEditable(true);
-            this.btnGuardar.setEnabled(true);
-
-            this.btnUsu.setEnabled(true);
-        }
-   public void limpiar(){
+    }
+    public void desactiva(){
+        this.txtSolicitud.setText("");
+        this.txtSolicitud.setEditable(false);
+        this.txtNumDoc.setEditable(false);
+        this.txtNom.setEditable(false);
+        this.btnGuardar.setEnabled(false);
+        this.btnImprimir.setEnabled(false);
+        this.btnUsu.setEnabled(false);
+    }
+    
+    public void activa(){
+        //this.txtSolicitud.setText("");
+        this.txtSolicitud.setEditable(true);
+        this.txtNumDoc.setEditable(true);
+        this.txtNom.setEditable(true);
+        this.btnGuardar.setEnabled(true);
+        this.btnUsu.setEnabled(true);
+    }
+    
+    public void limpiar(){
         this.txtNumDoc.setText("");
         this.txtNom.setText("");
-        this.lblCod.setText("");
+        this.lblCodUsuario.setText("");
         this.lblIdSol.setText("");
         this.txtExpJud.setText("");
         this.txtMateria.setText("");
@@ -87,11 +88,12 @@ public class Expedientes extends javax.swing.JDialog {
         this.txtDia.setText("");
         this.cboxMes.setSelectedIndex(0);
         this.txtAño.setText("");
-        this.txtOtros.setText("");
-                
+        this.txtOtros.setText("");            
         this.btnImprimir.setEnabled(false);
         desactiva();
-      }
+    }
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -140,7 +142,7 @@ public class Expedientes extends javax.swing.JDialog {
         txtNom = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblCod = new javax.swing.JLabel();
+        lblCodUsuario = new javax.swing.JLabel();
         lblIdSol = new javax.swing.JLabel();
         btnVisulaizar = new javax.swing.JButton();
         LabelIdSol = new javax.swing.JLabel();
@@ -156,8 +158,8 @@ public class Expedientes extends javax.swing.JDialog {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel1.setText("Expedientes");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        jLabel1.setText("Expedientes Judiciales");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 350, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -255,7 +257,7 @@ public class Expedientes extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(txtCausante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -387,7 +389,8 @@ public class Expedientes extends javax.swing.JDialog {
                     .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -406,11 +409,12 @@ public class Expedientes extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 137, 870, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 870, 240));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -419,7 +423,7 @@ public class Expedientes extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 140, 50));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 140, 50));
 
         btnImprimir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -428,7 +432,7 @@ public class Expedientes extends javax.swing.JDialog {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 140, 50));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 140, 50));
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -437,11 +441,11 @@ public class Expedientes extends javax.swing.JDialog {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 150, 60));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 150, 60));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel23.setText("Solicitud N°:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
 
         txtSolicitud.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -449,11 +453,11 @@ public class Expedientes extends javax.swing.JDialog {
                 txtSolicitudActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 89, -1));
+        getContentPane().add(txtSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 89, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("N° Documento:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 57, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         txtNumDoc.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNumDoc.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -467,7 +471,7 @@ public class Expedientes extends javax.swing.JDialog {
                 txtNumDocKeyTyped(evt);
             }
         });
-        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 58, 179, -1));
+        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 179, -1));
 
         btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
@@ -476,7 +480,7 @@ public class Expedientes extends javax.swing.JDialog {
                 btnUsuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, -1, 40));
+        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, 40));
 
         txtNom.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -484,22 +488,22 @@ public class Expedientes extends javax.swing.JDialog {
                 txtNomKeyPressed(evt);
             }
         });
-        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 430, -1));
+        getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 430, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, -1, -1));
 
-        lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 113, 81, 18));
+        lblCodUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblCodUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(lblCodUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 90, 81, 18));
 
         lblIdSol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 450, 60, 18));
+        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 530, 60, 18));
 
         btnVisulaizar.setText("Visualizar Expediente");
         btnVisulaizar.addActionListener(new java.awt.event.ActionListener() {
@@ -507,10 +511,10 @@ public class Expedientes extends javax.swing.JDialog {
                 btnVisulaizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVisulaizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 180, -1));
+        getContentPane().add(btnVisulaizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 180, -1));
 
         LabelIdSol.setText("LabelIdSol");
-        getContentPane().add(LabelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+        getContentPane().add(LabelIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
         btnCambiarDatos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCambiarDatos.setText("Cambiar Datos");
@@ -519,7 +523,7 @@ public class Expedientes extends javax.swing.JDialog {
                 btnCambiarDatosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 170, 50));
+        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 170, 50));
 
         jButton1.setText("ReImprimir Solicitud");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -527,7 +531,7 @@ public class Expedientes extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, 180, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 180, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -604,7 +608,7 @@ public class Expedientes extends javax.swing.JDialog {
 }//GEN-LAST:event_txtDiaKeyPressed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        cod = lblCod.getText();
+        cod = lblCodUsuario.getText();
         idsol =Integer.parseInt(lblIdSol.getText());
         int codTipSol=3;
         //
@@ -718,12 +722,12 @@ public class Expedientes extends javax.swing.JDialog {
                 ResultSet rs=con.consulta("SELECT codUsu,CONCAT(nombre,' ',apePat,' ',apeMat) AS nombre FROM usuarios WHERE numDoc='"+dni+"' LIMIT 0,1;");
                 rs.next();
                 this.txtNom.setText(rs.getString(2));
-                this.lblCod.setText(rs.getString(1));
+                this.lblCodUsuario.setText(rs.getString(1));
                 con.cierraConexion();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                 dni2 = this.txtNumDoc.getText();
-                dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
+                dialogNuevoUsuario p=new dialogNuevoUsuario(null,true,dni2);
                 p.setVisible(true);
             }
             
@@ -735,12 +739,12 @@ public class Expedientes extends javax.swing.JDialog {
                 ResultSet rs=con.consulta("SELECT codUsu, apeMat from usuarios where numDoc='"+ruc+"' LIMIT 0,1;");
                 rs.next();
                 this.txtNom.setText(rs.getString(2));
-                this.lblCod.setText(rs.getString(1));
+                this.lblCodUsuario.setText(rs.getString(1));
                 con.cierraConexion();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
                 // = this.txtNunDNI.getText();
-                dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
+                dialogNuevoJuridico p=new dialogNuevoJuridico(null, true, ruc);
                 p.setVisible(true);
             }
         }}
@@ -789,7 +793,7 @@ public class Expedientes extends javax.swing.JDialog {
             this.txtAño.setText(res.getString("anio"));
             this.txtOtros.setText(res.getString("obs"));
             this.LabelIdSol.setText(res.getString("idSol"));
-            this.lblCod.setText(res.getString("codUsu"));
+            this.lblCodUsuario.setText(res.getString("codUsu"));
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e);
         }
@@ -797,7 +801,7 @@ public class Expedientes extends javax.swing.JDialog {
 
     private void btnCambiarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarDatosActionPerformed
         // TODO add your handling code here:
-        cod = this.lblCod.getText();   //Codigo del usuario
+        cod = this.lblCodUsuario.getText();   //Codigo del usuario
         idsol =Integer.parseInt(this.LabelIdSol.getText());   //
 
         num_solicitud = this.txtSolicitud.getText();
@@ -890,7 +894,7 @@ public class Expedientes extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCod;
+    private javax.swing.JLabel lblCodUsuario;
     private javax.swing.JLabel lblIdSol;
     private javax.swing.JTextField txtAño;
     private javax.swing.JTextField txtCausante;

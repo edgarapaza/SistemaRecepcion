@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class frmSolicitudes extends javax.swing.JFrame {
 
     public frmSolicitudes() {
+                       
         try {
             this.setDefaultCloseOperation(frmSolicitudes.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
@@ -36,14 +37,14 @@ public class frmSolicitudes extends javax.swing.JFrame {
         btnPartidas = new javax.swing.JButton();
         btnExpArch = new javax.swing.JButton();
         btnExped = new javax.swing.JButton();
-        btnProcNoContenc = new javax.swing.JButton();
+        btnProcNoContencioso = new javax.swing.JButton();
         btnBuscarSol = new javax.swing.JButton();
         btnModificarSol = new javax.swing.JButton();
         btnNuevoUsuario = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnImpuestoSucesorio = new javax.swing.JButton();
+        btnLibroJueces = new javax.swing.JButton();
+        btnMinisterioPublico = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 50), new java.awt.Dimension(32767, 50));
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -114,7 +115,7 @@ public class frmSolicitudes extends javax.swing.JFrame {
                 btnExpArchActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExpArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 250, 60));
+        jPanel1.add(btnExpArch, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 250, 60));
 
         btnExped.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
         btnExped.setText("Expediente Judicial");
@@ -125,14 +126,14 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnExped, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 250, 80));
 
-        btnProcNoContenc.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        btnProcNoContenc.setText("Procesos no Contenciosos Notarial");
-        btnProcNoContenc.addActionListener(new java.awt.event.ActionListener() {
+        btnProcNoContencioso.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        btnProcNoContencioso.setText("Procesos no Contenciosos Notarial");
+        btnProcNoContencioso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcNoContencActionPerformed(evt);
+                btnProcNoContenciosoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnProcNoContenc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 330, 60));
+        jPanel1.add(btnProcNoContencioso, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 330, 60));
 
         btnBuscarSol.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
         btnBuscarSol.setText("Buscar Solicitud");
@@ -161,23 +162,36 @@ public class frmSolicitudes extends javax.swing.JFrame {
         });
         jPanel1.add(btnNuevoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 250, 60));
 
-        jButton2.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        jButton2.setText("Impuesto Sucesorio");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 250, 60));
+        btnImpuestoSucesorio.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        btnImpuestoSucesorio.setText("Impuesto Sucesorio");
+        btnImpuestoSucesorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImpuestoSucesorioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnImpuestoSucesorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 250, 60));
 
-        jButton3.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        jButton3.setText("Libro de Jueces");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 250, 60));
+        btnLibroJueces.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        btnLibroJueces.setText("Libro de Jueces");
+        btnLibroJueces.setEnabled(false);
+        btnLibroJueces.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLibroJuecesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLibroJueces, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 250, 60));
 
-        jButton4.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
-        jButton4.setText("Ministerio Publico");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 250, 60));
+        btnMinisterioPublico.setFont(new java.awt.Font("Cambria", 1, 18)); // NOI18N
+        btnMinisterioPublico.setText("Ministerio Publico");
+        btnMinisterioPublico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinisterioPublicoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMinisterioPublico, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 250, 60));
+        jPanel1.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, -1, 410));
 
-        jButton5.setFont(new java.awt.Font("Cambria", 1, 14)); // NOI18N
-        jButton5.setText("Constancias de Pago - Gob. Regional");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 250, 60));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 1020, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 1020, 520));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistemasolicitudes/imagen/logo_recepcion.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -298,10 +312,10 @@ public class frmSolicitudes extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1327, 837));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void btnProcNoContencActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcNoContencActionPerformed
+    private void btnProcNoContenciosoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcNoContenciosoActionPerformed
         ProNoContencioso ProcNoContenc = new ProNoContencioso(this, false);
         ProcNoContenc.setVisible(true);
-}//GEN-LAST:event_btnProcNoContencActionPerformed
+}//GEN-LAST:event_btnProcNoContenciosoActionPerformed
     private void btnExpedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpedActionPerformed
         Expedientes exp = new Expedientes(this, false);
         exp.setVisible(true);
@@ -388,6 +402,24 @@ public class frmSolicitudes extends javax.swing.JFrame {
         BusquedaSolicitudes busqueda = new BusquedaSolicitudes(this, false);
         busqueda.setVisible(true);
     }//GEN-LAST:event_btnBuscarSolActionPerformed
+
+    private void btnImpuestoSucesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpuestoSucesorioActionPerformed
+        // TODO add your handling code here:
+        dialogImpuestoSucesorio imp_sucesorio = new dialogImpuestoSucesorio(this, false);
+        imp_sucesorio.setVisible(true);
+    }//GEN-LAST:event_btnImpuestoSucesorioActionPerformed
+
+    private void btnLibroJuecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibroJuecesActionPerformed
+        JOptionPane.showMessageDialog(null, "Esta ventana esta en revision. por favor use otra formato alternativo. Gracias");
+        //dialoglibrojueces librojueces = new dialoglibrojueces(this, false);
+        //librojueces.setVisible(true);
+    }//GEN-LAST:event_btnLibroJuecesActionPerformed
+
+    private void btnMinisterioPublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinisterioPublicoActionPerformed
+        // TODO add your handling code here:
+        dialogMinisterioPublico min_publico = new dialogMinisterioPublico(this, false);
+        min_publico.setVisible(true);
+    }//GEN-LAST:event_btnMinisterioPublicoActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -401,14 +433,14 @@ public class frmSolicitudes extends javax.swing.JFrame {
     private javax.swing.JButton btnEscrPubl;
     private javax.swing.JButton btnExpArch;
     private javax.swing.JButton btnExped;
+    private javax.swing.JButton btnImpuestoSucesorio;
+    private javax.swing.JButton btnLibroJueces;
+    private javax.swing.JButton btnMinisterioPublico;
     private javax.swing.JButton btnModificarSol;
     private javax.swing.JButton btnNuevoUsuario;
     private javax.swing.JButton btnPartidas;
-    private javax.swing.JButton btnProcNoContenc;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnProcNoContencioso;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
