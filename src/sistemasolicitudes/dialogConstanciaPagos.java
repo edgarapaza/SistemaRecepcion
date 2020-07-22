@@ -3,6 +3,8 @@ package sistemasolicitudes;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -12,7 +14,7 @@ public class dialogConstanciaPagos extends javax.swing.JDialog {
     String nombreTrabajador, del, al, condicion, institucion, periodo, tipEscr, lugar, dia, mes, year1, otros, num_solicitud,ver_solicitud,NumIdSol;
     String numeroDocumento, nombreSolicitante;
     conexion con = new conexion();
-    private final ReportImpuestoSucesorio jasper;
+    private ReportConstanciaPago jasper;
     
     DefaultListModel modeloLista1;
     DefaultListModel modeloLista2;
@@ -22,11 +24,11 @@ public class dialogConstanciaPagos extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public dialogConstanciaPagos(java.awt.Frame parent, boolean modal) {
+    public dialogConstanciaPagos(java.awt.Frame parent, boolean modal) throws ClassNotFoundException {
         super(parent, modal);
         initComponents();
         
-        jasper= new ReportImpuestoSucesorio();
+        jasper= new ReportConstanciaPago();
         
         //Ocultado controles de la ventana
         
@@ -130,9 +132,9 @@ public class dialogConstanciaPagos extends javax.swing.JDialog {
         txtPeriodo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstInstitucion = new javax.swing.JList<>();
+        lstInstitucion = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lstPeriodo = new javax.swing.JList<>();
+        lstPeriodo = new javax.swing.JList();
         jLabel14 = new javax.swing.JLabel();
         txtlugar = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -144,7 +146,7 @@ public class dialogConstanciaPagos extends javax.swing.JDialog {
         jLabel15 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtOtros = new javax.swing.JTextArea();
-        cboCondicion = new javax.swing.JComboBox<>();
+        cboCondicion = new javax.swing.JComboBox();
         btnGuardar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
@@ -284,7 +286,7 @@ public class dialogConstanciaPagos extends javax.swing.JDialog {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 340, 340, -1));
 
-        cboCondicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccionar]", "Nombrado", "Contratado", "Obrero", "Pensionista" }));
+        cboCondicion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[Seleccionar]", "Nombrado", "Contratado", "Obrero", "Pensionista" }));
         jPanel2.add(cboCondicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 180, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 930, 470));
@@ -715,7 +717,12 @@ public class dialogConstanciaPagos extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialogConstanciaPagos dialog = new dialogConstanciaPagos(new javax.swing.JFrame(), true);
+                dialogConstanciaPagos dialog = null;
+                try {
+                    dialog = new dialogConstanciaPagos(new javax.swing.JFrame(), true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(dialogConstanciaPagos.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

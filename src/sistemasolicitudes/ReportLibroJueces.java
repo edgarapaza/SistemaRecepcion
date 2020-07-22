@@ -19,7 +19,7 @@ public class ReportLibroJueces
     Connection conn=null;
     conexion obj = new conexion();
     
-    public ReportLibroJueces()
+    public ReportLibroJueces() throws ClassNotFoundException
     {
         try
         {
@@ -31,7 +31,7 @@ public class ReportLibroJueces
             conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
-        catch (ClassNotFoundException | SQLException ex)
+        catch (SQLException ex)
         {
             System.out.println(ex);
         }

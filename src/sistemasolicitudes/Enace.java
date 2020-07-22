@@ -571,21 +571,22 @@ public class Enace extends javax.swing.JDialog {
 }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        cod = Integer.parseInt(lblCod.getText());
-        idsol =Integer.parseInt(lblIdSol.getText());
+        cod   = Integer.parseInt(lblCod.getText());
+        idsol = Integer.parseInt(lblIdSol.getText());
         
         num_solicitud = this.txtSolicitud.getText();
         int codTipSol=4;
         //
-        conPri = txtContrPriv.getText();
-        otor = txtOtor.getText();
-        favor = txtFavor.getText();
-        inst=txtInsti.getText();
-        lugar=txtLugar.getText();
-        dia = this.txtdia.getText();
-        mes = cboxMes.getSelectedItem().toString();
-        año = txtAño.getText();
-        otros = txtOtros.getText();
+        conPri = txtContrPriv.getText().toUpperCase();
+	otor   = txtOtor.getText().toUpperCase();
+	favor  = txtFavor.getText().toUpperCase();
+	inst   = txtInsti.getText().toUpperCase();
+	lugar  = txtLugar.getText().toUpperCase();
+	dia    = this.txtdia.getText().toUpperCase();
+	mes    = cboxMes.getSelectedItem().toString().toUpperCase();
+	año    = txtAño.getText().toUpperCase();
+	otros  = txtOtros.getText().toUpperCase();
+        
         try{
             int rpta = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de guardar?","ARP Sistema",JOptionPane.YES_NO_OPTION);
             if(rpta == 0){
@@ -599,7 +600,7 @@ public class Enace extends javax.swing.JDialog {
                 
                 con.cierraConexion();
             }
-        }catch(HeadlessException | SQLException e){
+        }catch(SQLException e){
             JOptionPane.showMessageDialog(rootPane, "Error Guardando. " +e);
         }
 }//GEN-LAST:event_btnGuardarActionPerformed

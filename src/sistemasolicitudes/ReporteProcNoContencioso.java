@@ -47,7 +47,7 @@ public class ReporteProcNoContencioso
 	
        String archivo = f.getAbsolutePath() + "\\report\\reportProcNoContencioso.jasper";
 
-       // String archivo = "C:/Users/recepcion-3/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportProcNoConten.jasper";
+       //String archivo = "C:/Users/recepcion-3/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportProcNoConten.jasper";
         
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){

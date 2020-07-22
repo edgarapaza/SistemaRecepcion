@@ -1,10 +1,12 @@
 package sistemasolicitudes;
 
-import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
 
 
 public class dialogImpuestoSucesorio extends javax.swing.JDialog {
@@ -17,7 +19,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
     /** Creates new form EscriturasPublicas
      * @param parent
      * @param modal */
-    public dialogImpuestoSucesorio(java.awt.Frame parent, boolean modal) {
+    public dialogImpuestoSucesorio(java.awt.Frame parent, boolean modal) throws ClassNotFoundException {
         super(parent, modal);
         initComponents();
         
@@ -34,7 +36,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
         
     }
     
-    public void desactiva(){
+     public void desactiva(){
         this.txtSolicitud.setText("");
         this.txtSolicitud.setEditable(false);
         this.txtNumDoc.setEditable(false);
@@ -458,7 +460,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
 
                     limpiar();
                 }
-            }catch(HeadlessException | SQLException e){
+            }catch(Exception e){
                 JOptionPane.showMessageDialog(rootPane, "Error al Insertar los Registros en la Base de Datos" + e);
             }
         
@@ -538,7 +540,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
 
     private void btnUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuActionPerformed
         int numero = txtNumDoc.getText().length();
-        String dni2 = "";
+        String dni2 = null;
 
         if (numero <8){
             JOptionPane.showMessageDialog(rootPane, "Numero de Digitos de DNI Menor que 8 Numeros y de RUC es 11");
@@ -558,7 +560,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                     dni2 = this.txtNumDoc.getText();
-                    dialogNuevoUsuario p=new dialogNuevoUsuario(null,true,dni2);
+                    dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
                     p.setVisible(true);
                 }
 
@@ -574,7 +576,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
                     // = this.txtNunDNI.getText();
-                    dialogNuevoJuridico p=new dialogNuevoJuridico(null, true, ruc);
+                    dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
                     p.setVisible(true);
                 }
             }}
@@ -621,7 +623,7 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
             this.txtOtros.setText(res.getString("obs"));
             this.labelIdSol.setText(res.getString("idSol"));
             con.cierraConexion();
-        }catch(SQLException e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "Error Consultando. " + e);
         }
     }//GEN-LAST:event_btnVerActionPerformed
@@ -703,7 +705,12 @@ public class dialogImpuestoSucesorio extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialogImpuestoSucesorio dialog = new dialogImpuestoSucesorio(new javax.swing.JFrame(), true);
+                dialogImpuestoSucesorio dialog = null;
+                try {
+                    dialog = new dialogImpuestoSucesorio(new javax.swing.JFrame(), true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(dialogImpuestoSucesorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

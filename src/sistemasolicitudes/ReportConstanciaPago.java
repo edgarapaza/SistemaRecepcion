@@ -19,7 +19,7 @@ public class ReportConstanciaPago
     Connection conn=null;
     conexion obj = new conexion();
     
-    public ReportConstanciaPago()
+    public ReportConstanciaPago() throws ClassNotFoundException
     {
         try
         {
@@ -31,7 +31,7 @@ public class ReportConstanciaPago
             conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
-        catch (ClassNotFoundException | SQLException ex)
+        catch (SQLException ex)
         {
             System.out.println(ex);
         }

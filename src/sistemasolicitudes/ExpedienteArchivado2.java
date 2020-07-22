@@ -10,9 +10,9 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     
     conexion con = new conexion();
     int idsol, codigoNotario;
-    String expArchivado,tipExp, codNot, materia,juzgado, otorgante, favorecido, causante, seguido, lugar, anio, otros, dia, mes, num_solicitud, ver_solicitud, cod,contra;
+    String expArchivado,tipExp, codNot, materia,juzgado, otorgante, favorecido, causante, seguido, lugar, anio, otros, dia, mes, num_solicitud, ver_solicitud, cod, obs, contra;
     
-    private final ReportExpedienteArchivado jasper;
+    private ReportExpedienteArchivado jasper;
     
     notarios2 nt2 = new notarios2();
     Object[][] datNot;
@@ -50,7 +50,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         this.txtDia.setEnabled(false);
         this.cboxMes.setEnabled(false);
         this.txtAño.setEnabled(false);
-        this.txtLugar2.setEnabled(false);
         this.txtOtros.setEnabled(false);
         
         this.btnUsu.setEnabled(false);
@@ -60,7 +59,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     }
 
     public void activa(){
-        
         this.txtSolicitud.setEnabled(true);
         this.txtNumDoc.setEnabled(true);
         this.txtNom.setEnabled(true);
@@ -76,14 +74,14 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         this.txtDia.setEnabled(true);
         this.cboxMes.setEnabled(true);
         this.txtAño.setEnabled(true);
-        this.txtLugar2.setEnabled(true);
         this.txtOtros.setEnabled(true);
-        
         this.btnUsu.setEnabled(true);
+        this.btnCambiarDatos.setEnabled(false);
         this.btnGuardar.setEnabled(true);
         this.btnImprimir.setEnabled(true);
         
         this.txtSolicitud.setEnabled(false);
+        Desactiva();
     }
     
     public void limpiar(){
@@ -95,16 +93,17 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         this.txtOtorgante.setText("");
         this.txtFavorecido.setText("");
         this.txtSeguido.setText("");
-
-        this.txtLugar2.setText("");
+        this.txtCausante.setText("");
+        this.txtLugar.setText("");
+        this.txtJuzgado.setText("");
+        this.txtOtros.setText("");
         this.txtDia.setText("");
         this.cboxMes.setSelectedIndex(0);
         this.txtAño.setText("");
-        this.txtOtros.setText("");
                 
         this.btnImprimir.setEnabled(false);
         Desactiva();
-      }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,8 +140,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         txtfecini = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtfecfin = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
-        txtLugar2 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
@@ -155,6 +152,8 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtJuzgado = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtLugar = new javax.swing.JTextField();
         txtNumDoc = new javax.swing.JTextField();
         btnUsu = new javax.swing.JButton();
         txtNom = new javax.swing.JTextField();
@@ -312,18 +311,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
         jPanel5.add(txtfecfin, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 70, -1));
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel24.setText("Lugar:");
-        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
-
-        txtLugar2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtLugar2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLugar2KeyPressed(evt);
-            }
-        });
-        jPanel5.add(txtLugar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 330, -1));
-
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel18.setText("Dia");
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
@@ -381,7 +368,17 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
         jLabel7.setText("Juzgado:");
         jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, 20));
+
+        txtJuzgado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtJuzgadoKeyPressed(evt);
+            }
+        });
         jPanel5.add(txtJuzgado, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 330, -1));
+
+        jLabel12.setText("Lugar:");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, -1, -1));
+        jPanel5.add(txtLugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 160, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -599,7 +596,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 	seguido       = this.txtSeguido.getText().toUpperCase();
 	causante      = this.txtCausante.getText().toUpperCase();
 	juzgado       = this.txtJuzgado.getText().toUpperCase();
-	lugar         = this.txtLugar2.getText().toUpperCase();
+	lugar         = this.txtLugar.getText().toUpperCase();
 	dia           = this.txtDia.getText().toUpperCase();
 	mes           = this.cboxMes.getSelectedItem().toString().toUpperCase();
 	anio          = this.txtAño.getText();
@@ -625,7 +622,8 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-        String num_sol = txtSolicitud.getText();
+        
+        String num_sol = this.txtSolicitud.getText();
         jasper.ejecutarReporte(num_sol);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
@@ -660,7 +658,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         txtOtorgante.setText("");
         txtFavorecido.setText("");
         txtSeguido.setText("");
-        txtLugar2.setText("");
 
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -676,15 +673,15 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
             con.conectar();
             ResultSet res = con.consulta("SELECT s.codSol,s.idSol, CONCAT(u.nombre,' ', u.apePat,' ',apeMat) AS usuario, u.codUsu, u.codDis, u.numDoc, u.direccion, ea.idSol,ea.tipExp,ea.codNot,ea.otorgante,ea.favorecido,ea.juzgado,ea.seguido,ea.causante,ea.lugar ,ea.dia,ea.mes,ea.anio,ea.obs,ea.contra FROM solicitudes AS s, usuarios AS u, exparchivado AS ea WHERE s.idSol = ea.idSol AND s.codUsu = u.codUsu AND s.codSol = "+ver_solicitud+";");
             res.next();
-            this.txtSolicitud.setText(res.getString("codSol").toString());
-            this.txtNumDoc.setText(res.getString("numDoc").toString());
+            this.txtSolicitud.setText(res.getString("codSol"));
+            this.txtNumDoc.setText(res.getString("numDoc"));
             this.txtNom.setText(res.getString("usuario"));
             this.txtExpedienteArchivado.setText(res.getString("tipExp"));
             this.txtOtorgante.setText(res.getString("otorgante"));
             this.txtFavorecido.setText(res.getString("favorecido"));
             this.txtSeguido.setText(res.getString("seguido"));
             this.txtCausante.setText(res.getString("causante"));
-            this.txtLugar2.setText(res.getString("lugar"));
+            this.txtLugar.setText(res.getString("lugar"));
             this.txtJuzgado.setText(res.getString("juzgado"));
             this.txtDia.setText(res.getString("dia"));
             this.cboxMes.setSelectedItem(res.getString("mes"));
@@ -711,7 +708,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         favorecido = this.txtFavorecido.getText().toUpperCase();
         seguido = this.txtSeguido.getText().toUpperCase();
         causante = this.txtCausante.getText().toUpperCase();
-        lugar = this.txtLugar2.getText().toUpperCase();
+        lugar = this.txtLugar.getText().toUpperCase();
         juzgado = this.txtJuzgado.getText().toUpperCase();
         causante = this.txtCausante.getText().toUpperCase();
         contra = "";
@@ -750,7 +747,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     private void txtAñoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtSeguido.requestFocus();
+            this.txtJuzgado.requestFocus();
         }
     }//GEN-LAST:event_txtAñoKeyPressed
 
@@ -767,12 +764,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtDiaKeyPressed
 
-    private void txtLugar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLugar2KeyPressed
-        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtDia.requestFocus();
-        }
-    }//GEN-LAST:event_txtLugar2KeyPressed
-
     private void TablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMouseClicked
         // TODO add your handling code here:
         fila = Tabla.rowAtPoint(evt.getPoint());
@@ -783,7 +774,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
             String fecini = String.valueOf(Tabla.getValueAt(fila, 3));
             String fecfin = String.valueOf(Tabla.getValueAt(fila, 4));
             txtNotario.setText(nombre);
-            txtLugar2.setText(provincia);
             txtCodNot.setText(codigo);
             txtfecini.setText(fecini);
             txtfecfin.setText(fecfin);
@@ -855,7 +845,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
 
     private void txtFavorecidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFavorecidoKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtDia.requestFocus();
+            this.txtSeguido.requestFocus();
         }
     }//GEN-LAST:event_txtFavorecidoKeyPressed
 
@@ -868,9 +858,16 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private void txtCausanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCausanteKeyPressed
         // TODO add your handling code here:
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtOtros.requestFocus();
+            this.txtDia.requestFocus();
         }
     }//GEN-LAST:event_txtCausanteKeyPressed
+
+    private void txtJuzgadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtJuzgadoKeyPressed
+        // TODO add your handling code here:
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            this.txtOtros.requestFocus();
+        }
+    }//GEN-LAST:event_txtJuzgadoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -928,6 +925,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -937,7 +935,6 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -961,7 +958,7 @@ public class ExpedienteArchivado2 extends javax.swing.JDialog {
     private javax.swing.JTextField txtExpedienteArchivado;
     private javax.swing.JTextField txtFavorecido;
     private javax.swing.JTextField txtJuzgado;
-    private javax.swing.JTextField txtLugar2;
+    private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNotario;
     private javax.swing.JTextField txtNumDoc;

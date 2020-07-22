@@ -4,6 +4,8 @@ package sistemasolicitudes;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -17,17 +19,21 @@ public class dialoglibrojueces extends javax.swing.JDialog {
     /** Creates new form Libro de Jueces
      * @param parent
      * @param modal */
-    public dialoglibrojueces(java.awt.Frame parent, boolean modal) {
+    public dialoglibrojueces(java.awt.Frame parent, boolean modal) throws ClassNotFoundException {
         super(parent, modal);
         initComponents();
         
-        desactiva();
+
+        jasper= new ReportLibroJueces();
         
         lblIdSol.setVisible(false);
-        lblCod.setVisible(false);
-        jLabel5.setVisible(false);
+        lblCod.setVisible(true);
+        jLabel5.setVisible(true);
         LabelIdSol.setVisible(false);
         btnCambiarDatos.setVisible(false);
+        
+        Desactivar();
+
     }
     public void dbcbox(String sql,JComboBox a){
         try {
@@ -42,34 +48,50 @@ public class dialoglibrojueces extends javax.swing.JDialog {
             }
     }
     
-    public void desactiva(){
+    public void Desactivar(){
         
         this.txtSolicitud.setEnabled(false);
         this.txtNumDoc.setEnabled(false);
         this.txtNombre.setEnabled(false);
+        this.lblCod.setEnabled(false);
+        this.lblIdSol.setEnabled(false);
         this.cboTipoActa.setEnabled(false);
         this.txtOtorgante.setEnabled(false);
         this.txtFavorecido.setEnabled(false);
         this.txtSeguido.setEnabled(false);
         this.txtDemandado.setEnabled(false);
         this.txtJuezPaz.setEnabled(false);
-            
+        this.txtLugar.setEnabled(false);
+        this.txtDia.setEnabled(false);
+        this.cboxMes.setEnabled(false);
+        this.txtAño.setEnabled(false);
+        this.txtNombreBien.setEnabled(false);
+        this.txtObservaciones.setEnabled(false);
+        
         this.btnGuardar.setEnabled(false);
         this.btnImprimir.setEnabled(false);
         this.btnUsu.setEnabled(false);
     }
     
-    public void activa(){
+    public void Activa(){
         this.txtSolicitud.setEnabled(true);
         this.txtNumDoc.setEnabled(true);
         this.txtNombre.setEnabled(true);
+        this.lblCod.setEnabled(true);
+        this.lblIdSol.setEnabled(true);
         this.cboTipoActa.setEnabled(true);
         this.txtOtorgante.setEnabled(true);
         this.txtFavorecido.setEnabled(true);
         this.txtSeguido.setEnabled(true);
         this.txtDemandado.setEnabled(true);
         this.txtJuezPaz.setEnabled(true);
-            
+        this.txtLugar.setEnabled(true);
+        this.txtDia.setEnabled(true);
+        this.cboxMes.setEnabled(true);
+        this.txtAño.setEnabled(true);
+        this.txtNombreBien.setEnabled(true);
+        this.txtObservaciones.setEnabled(true);
+        
         this.btnGuardar.setEnabled(true);
         this.btnImprimir.setEnabled(true);
         this.btnUsu.setEnabled(true);
@@ -95,7 +117,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
        
                 
         this.btnImprimir.setEnabled(false);
-        desactiva();
+        Desactivar();
       }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -120,7 +142,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
         txtDemandado = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtJuezPaz = new javax.swing.JTextField();
-        cboTipoActa = new javax.swing.JComboBox<>();
+        cboTipoActa = new javax.swing.JComboBox();
         jPanel6 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         cboxMes = new javax.swing.JComboBox();
@@ -162,20 +184,27 @@ public class dialoglibrojueces extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del documento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Tipo de Acta:");
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Otorgante:");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("A favor de:");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel15.setText("Seguido():");
+        jLabel15.setText("Seguido por:");
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Demandado:");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         txtOtorgante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtOtorgante.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -183,6 +212,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtOtorganteKeyPressed(evt);
             }
         });
+        jPanel5.add(txtOtorgante, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 48, 280, 30));
 
         txtFavorecido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtFavorecido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -190,6 +220,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtFavorecidoKeyPressed(evt);
             }
         });
+        jPanel5.add(txtFavorecido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 280, 30));
 
         txtSeguido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtSeguido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -197,6 +228,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtSeguidoKeyPressed(evt);
             }
         });
+        jPanel5.add(txtSeguido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 280, 30));
 
         txtDemandado.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDemandado.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -204,9 +236,11 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtDemandadoKeyPressed(evt);
             }
         });
+        jPanel5.add(txtDemandado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 280, 30));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel17.setText("Juez de Paz:");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         txtJuezPaz.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtJuezPaz.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -214,8 +248,9 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtJuezPazKeyPressed(evt);
             }
         });
+        jPanel5.add(txtJuezPaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 211, 280, 30));
 
-        cboTipoActa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Civil", "Criminal" }));
+        cboTipoActa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Civil", "Criminal" }));
         cboTipoActa.setToolTipText("");
         cboTipoActa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,60 +262,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 cboTipoActaKeyPressed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel17)
-                        .addComponent(jLabel21)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDemandado)
-                    .addComponent(txtSeguido)
-                    .addComponent(txtFavorecido)
-                    .addComponent(txtOtorgante)
-                    .addComponent(txtJuezPaz)
-                    .addComponent(cboTipoActa, 0, 280, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cboTipoActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtOtorgante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtFavorecido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(txtSeguido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(txtDemandado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(txtJuezPaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel5.add(cboTipoActa, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 11, 280, 31));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("Nombre del Bien:");
@@ -353,59 +335,60 @@ public class dialoglibrojueces extends javax.swing.JDialog {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(jLabel18))
-                                .addComponent(jLabel24)))
+                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreBien)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtLugar)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel24)
-                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19)
-                    .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20)
-                    .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                        .addComponent(jLabel18)
+                        .addComponent(jLabel19)
+                        .addComponent(jLabel20)
+                        .addComponent(cboxMes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22)
-                    .addComponent(txtNombreBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(txtNombreBien, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -414,7 +397,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -422,12 +405,15 @@ public class dialoglibrojueces extends javax.swing.JDialog {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 870, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 870, 300));
 
         btnGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -436,7 +422,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 140, 50));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 140, 50));
 
         btnImprimir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -445,7 +431,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 btnImprimirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 140, 50));
+        getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 140, 50));
 
         btnNuevo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -476,7 +462,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtNumDocKeyTyped(evt);
             }
         });
-        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 179, -1));
+        getContentPane().add(txtNumDoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 91, 179, 30));
 
         btnUsu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnUsu.setText("BUSCAR SOLICITANTE");
@@ -485,7 +471,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 btnUsuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, 40));
+        getContentPane().add(btnUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, 40));
 
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -493,7 +479,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 txtNombreKeyPressed(evt);
             }
         });
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 430, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 430, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -501,14 +487,14 @@ public class dialoglibrojueces extends javax.swing.JDialog {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Codigo Usuario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 460, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, -1, -1));
 
         lblCod.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCod.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 460, 81, 18));
+        getContentPane().add(lblCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 81, 18));
 
         lblIdSol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 490, 60, 18));
+        getContentPane().add(lblIdSol, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 560, 60, 18));
 
         btnVisulaizar.setText("Visualizar Expediente");
         btnVisulaizar.addActionListener(new java.awt.event.ActionListener() {
@@ -528,7 +514,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 btnCambiarDatosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 170, 50));
+        getContentPane().add(btnCambiarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 170, 50));
 
         jButton1.setText("ReImprimir Solicitud");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -628,15 +614,16 @@ public class dialoglibrojueces extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
+     
         String num_sol = txtSolicitud.getText();
         jasper.ejecutarReporte(num_sol);
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        this.jPanel2.setVisible(true);
+        Activa();
         
-        activa();
+        this.jPanel2.setVisible(true);
+
         
         this.txtNumDoc.requestFocus();
         txtNumDoc.requestFocus();
@@ -713,7 +700,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                     dni2 = this.txtNumDoc.getText();
-                    dialogNuevoUsuario p=new dialogNuevoUsuario(null,true,dni2);
+                    dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
                     p.setVisible(true);
                 }
 
@@ -729,7 +716,7 @@ public class dialoglibrojueces extends javax.swing.JDialog {
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
                     // = this.txtNunDNI.getText();
-                    dialogNuevoJuridico p=new dialogNuevoJuridico(null, true, ruc);
+                    dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
                     p.setVisible(true);
                 }
             }}
@@ -746,19 +733,9 @@ public class dialoglibrojueces extends javax.swing.JDialog {
         // TODO add your handling code here:
         ver_solicitud = JOptionPane.showInputDialog("Ingrese Numero de Solicitud a visualizar");
 
-        this.txtSolicitud.setEnabled(true);
-        this.txtNumDoc.setEnabled(true);
-        this.txtNombre.setEnabled(true);
-        this.cboTipoActa.setEnabled(true);
-        this.txtOtorgante.setEnabled(true);
-        this.txtFavorecido.setEnabled(true);
-        this.txtSeguido.setEnabled(true);
-        this.txtDemandado.setEnabled(true);
-        this.txtJuezPaz.setEnabled(true);
-            
-        this.btnGuardar.setEnabled(true);
-        this.btnImprimir.setEnabled(true);
+        this.txtNumDoc.setEditable(true);
         this.btnUsu.setEnabled(true);
+
         this.btnGuardar.setVisible(false);
         this.btnCambiarDatos.setVisible(true);
 
@@ -831,7 +808,8 @@ public class dialoglibrojueces extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String solicitudD = JOptionPane.showInputDialog("Escriba el Numero de Solicitud");
-        jasper.ejecutarReporte(solicitudD);
+        String num_sol = solicitudD;
+        jasper.ejecutarReporte(num_sol);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtDemandadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDemandadoKeyPressed
@@ -902,7 +880,12 @@ public class dialoglibrojueces extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialoglibrojueces dialog = new dialoglibrojueces(new javax.swing.JFrame(), true);
+                dialoglibrojueces dialog = null;
+                try {
+                    dialog = new dialoglibrojueces(new javax.swing.JFrame(), true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(dialoglibrojueces.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
               
                     public void windowClosing(java.awt.event.WindowEvent e) {

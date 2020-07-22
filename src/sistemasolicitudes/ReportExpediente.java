@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -31,9 +33,11 @@ public class ReportExpediente
             conn= DriverManager.getConnection(url,user,clave);
             //JOptionPane.showMessageDialog(null,"Conexión establecida");
         }
-        catch (ClassNotFoundException | SQLException ex)
+        catch (SQLException ex)
         {
             System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ReportExpediente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

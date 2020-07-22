@@ -14,12 +14,12 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-public class ReportMinisterioPublico
+public class ReportMinisterioPublicoCivil
 {
     Connection conn=null;
     conexion obj = new conexion();
     
-    public ReportMinisterioPublico() throws ClassNotFoundException
+    public ReportMinisterioPublicoCivil() throws ClassNotFoundException
     {
         try
         {
@@ -43,9 +43,9 @@ public class ReportMinisterioPublico
     {                     
         File f = new File (""); // Creamos un objeto file
 	
-        String archivo = f.getAbsolutePath() + "\\report\\reportMinisterioPublico.jasper";
+        String archivo = f.getAbsolutePath() + "\\report\\reportMinisterioPublicoCivil.jasper";
         
-        //String archivo = "C:/Users/Tecnologia/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportMinisterioPublico.jasper";
+        //String archivo = "C:/Users/Tecnologia/Documents/NetBeansProjects/SistemaSolicitudes/src/sistemasolicitudes/reportMinisterioPublicoCivil.jasper";
         
         System.out.println("Cargando desde: " + archivo);
         if(archivo == null){
@@ -87,3 +87,4 @@ public void cerrar(){
     }
 }
 }
+

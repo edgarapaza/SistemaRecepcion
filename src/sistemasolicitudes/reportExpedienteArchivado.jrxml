@@ -274,7 +274,7 @@ WHERE s.idSol = ea.idSol AND
 			<textField>
 				<reportElement x="176" y="326" width="376" height="25" uuid="9a438a09-750d-465d-bcd4-61f4837b08ff"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obs}]]></textFieldExpression>
 			</textField>
@@ -306,14 +306,14 @@ WHERE s.idSol = ea.idSol AND
 			<textField>
 				<reportElement x="277" y="306" width="55" height="21" uuid="8ef410ca-8ec3-48f1-bd63-f730d1ea4f1b"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dia}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="76" y="327" width="74" height="14" uuid="8adc1513-caf0-4859-aaf4-cfde99b9fe23"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
 				<text><![CDATA[MAS DATOS :]]></text>
 			</staticText>
@@ -361,65 +361,93 @@ WHERE s.idSol = ea.idSol AND
 			<textField>
 				<reportElement x="177" y="227" width="376" height="20" uuid="2a0bbf60-c003-46e1-b820-1dbc36bd3ce4"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Serif" size="16" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{notario}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codSol}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="176" y="167" width="378" height="20" uuid="2d03c70a-b892-4207-934e-31c0911f0ccd"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipExp}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="176" y="187" width="378" height="20" uuid="036baf00-b836-4ee4-844c-f1e554e17ce0"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{otorgante}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="176" y="207" width="378" height="20" uuid="5d01426f-e4bb-4b9f-b6a0-a5e536840fee"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{favorecido}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="176" y="247" width="378" height="20" uuid="2c29b68d-0c75-4088-a7de-1dbc689f9e6a"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{seguido}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipExp}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="62" y="166" width="100" height="20" uuid="3b12ec91-e976-490a-b5b1-58aa37dfeda7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Notario:]]></text>
+			</staticText>
 			<textField>
 				<reportElement x="176" y="266" width="378" height="20" uuid="8b59a5e1-0527-4f94-a0be-c9df09d6263c"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{causante}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="470" y="3" width="76" height="22" uuid="38ce7369-4373-48ff-8df6-2b6ecf4dba39"/>
-				<textElement>
-					<font fontName="Serif" size="16" isBold="true"/>
+			<staticText>
+				<reportElement x="62" y="186" width="100" height="20" uuid="10a74fe0-011a-4b96-b9ec-e97569be4bf5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{codSol}]]></textFieldExpression>
+				<text><![CDATA[Otorgante:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="175" y="186" width="100" height="20" uuid="073a2d1c-25c9-4750-b4d3-89348add3ff2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otorgante}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="62" y="206" width="100" height="20" uuid="7f3b78c3-a803-4906-ac0b-084615fcc5ff"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Favorecido:]]></text>
+			</staticText>
 			<textField>
 				<reportElement x="332" y="307" width="100" height="20" uuid="8cd009c1-26cd-48ce-b3d3-8aa551387133"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{favorecido}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="62" y="226" width="100" height="20" uuid="1b43e016-472b-4bca-8144-26c164744aad"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Juzgado:]]></text>
+			</staticText>
 			<textField>
 				<reportElement x="432" y="306" width="59" height="21" uuid="016f5ffb-fe81-41e4-a559-0575acc1b994"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{juzgado}]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement x="118" y="131" width="13" height="10" uuid="f7d07527-cd73-452b-87b7-a5882a67c682"/>
@@ -432,21 +460,28 @@ WHERE s.idSol = ea.idSol AND
 				<textElement>
 					<font size="7"/>
 				</textElement>
-				<text><![CDATA[Otro: Exhibición, Constanticia]]></text>
+				<text><![CDATA[Seguido por:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="262" y="116" width="74" height="20" uuid="799c007a-4802-4799-bd80-3ff1996ee44d"/>
 				<textElement>
-					<font size="9"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<text><![CDATA[ Copia simple]]></text>
+				<textFieldExpression><![CDATA[$F{seguido}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="62" y="266" width="100" height="20" uuid="1aef5887-05fe-44a3-84ef-82ab64e261b0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Causante:]]></text>
 			</staticText>
-			<textField pattern="yyyy">
-				<reportElement x="508" y="5" width="40" height="20" uuid="54a6b4de-10b6-4e07-b72c-26a471ac99f1"/>
+			<textField>
+				<reportElement x="175" y="266" width="100" height="20" uuid="e12ba8b8-454f-472d-a16b-76be0839e94e"/>
 				<textElement>
-					<font fontName="Serif"/>
+					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{causante}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="66" y="67" width="450" height="20" uuid="7dcdedd7-ec18-4f61-84ab-9d3902f5493b"/>

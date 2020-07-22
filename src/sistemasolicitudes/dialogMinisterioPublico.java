@@ -4,6 +4,8 @@ import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -12,16 +14,18 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
     conexion con = new conexion();
     int idsol;
     String tipoMP, caso, area,materia,demandante, demandado,fiscalia, numcaso,numpaquete, lugar, dia, mes, anio, otros, num_solicitud, ver_solicitud, cod;
-    private final ReportMinisterioPublico jasper;
+    private ReportMinisterioPublico jasper;
+    private ReportMinisterioPublicoCivil jasper1;
     
     /** Creates new form MINISTERIO PUBLICO
      * @param parent
      * @param modal */    
-    public dialogMinisterioPublico(java.awt.Frame parent, boolean modal) {
+    public dialogMinisterioPublico(java.awt.Frame parent, boolean modal) throws ClassNotFoundException {
         super(parent, modal);
         initComponents();
         
         jasper = new ReportMinisterioPublico();
+
 
         lblIdSol.setVisible(false);
         lblCod.setVisible(false);
@@ -87,12 +91,11 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
     }
     
     public void Limpiar(){
+        this.cboTipoExpediente.setSelectedIndex(0);
+        this.txtSolicitud.setText("");
+        this.txtSolicitud.setText("");
         this.txtNumDoc.setText("");
         this.txtNom.setText("");
-        this.lblCod.setText("");
-        this.lblIdSol.setText("");
-        
-        this.cboTipoExpediente.setSelectedIndex(0);
         this.txtCaso.setText("");
         this.txtArea.setText("");
         this.txtMateria.setText("");
@@ -105,9 +108,10 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
         this.txtDia.setText("");
         this.cboxMes.setSelectedIndex(0);
         this.txtYear.setText("");
-        this.txtOtros.setText("");            
+        this.txtOtros.setText(""); 
+        
         this.btnImprimir.setEnabled(false);
-        Desactiva();
+        
     }
 
     /**
@@ -130,7 +134,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
         txtArea = new javax.swing.JTextField();
         txtMateria = new javax.swing.JTextField();
         txtDemandado = new javax.swing.JTextField();
-        cboTipoExpediente = new javax.swing.JComboBox<>();
+        cboTipoExpediente = new javax.swing.JComboBox();
         txtDemandante = new javax.swing.JTextField();
         lblDemandante = new javax.swing.JLabel();
         lblDemandado = new javax.swing.JLabel();
@@ -233,7 +237,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
         });
         jPanel5.add(txtDemandado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 404, -1));
 
-        cboTipoExpediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "[Seleccione]", "CIVIL", "PENAL" }));
+        cboTipoExpediente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[Seleccione]", "CIVIL", "PENAL" }));
         cboTipoExpediente.setSelectedItem(0);
         cboTipoExpediente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -241,6 +245,12 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
             }
         });
         jPanel5.add(cboTipoExpediente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 236, 31));
+
+        txtDemandante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDemandanteKeyPressed(evt);
+            }
+        });
         jPanel5.add(txtDemandante, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 404, -1));
 
         lblDemandante.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -327,6 +337,12 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
         });
 
         jLabel7.setText("Numero Paquete:");
+
+        txtNumeroPaquete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumeroPaqueteKeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("Observaciones:");
 
@@ -541,7 +557,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
 
     private void txtNumeroCasoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroCasoKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtLugar.requestFocus();
+            txtNumeroPaquete.requestFocus();
         }
     }//GEN-LAST:event_txtNumeroCasoKeyPressed
 
@@ -609,12 +625,22 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
-        String num_sol = txtSolicitud.getText();
-        jasper.ejecutarReporte(num_sol);
+        if(cboTipoExpediente.getSelectedItem().equals("CIVIL")){
+            String num_sol = txtSolicitud.getText();
+            jasper1.ejecutarReporte(num_sol);
+        }
+
+        if(cboTipoExpediente.getSelectedItem().equals("PENAL")){
+            String num_sol = txtSolicitud.getText();
+            jasper.ejecutarReporte(num_sol);
+        }
+        
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         Activa();
+        Limpiar();
+        
         this.txtNumDoc.requestFocus();
         txtNumDoc.requestFocus();
         int solic=0,esc=0;
@@ -683,7 +709,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(rootPane, "Usuario no encontrado","Administrador de Sistema",JOptionPane.INFORMATION_MESSAGE);
                     dni2 = this.txtNumDoc.getText();
-                    dialogNuevoUsuario p=new dialogNuevoUsuario(null,true,dni2);
+                    dialogNuevoUsuario p=new dialogNuevoUsuario(null,false,dni2);
                     p.setVisible(true);
                 }
 
@@ -699,7 +725,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
                 }catch(SQLException e){
                     JOptionPane.showMessageDialog(rootPane, "Empresa no registrada","Administrador del Sitema", JOptionPane.INFORMATION_MESSAGE);
                     // = this.txtNunDNI.getText();
-                    dialogNuevoJuridico p=new dialogNuevoJuridico(null, true, ruc);
+                    dialogNuevoJuridico p=new dialogNuevoJuridico(null, false, ruc);
                     p.setVisible(true);
                 }
             }}
@@ -785,7 +811,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Datos Modificados Satisfactotiamente");
                 //con.cierraConexion();
 
-            }catch(SQLException | HeadlessException e){
+            }catch(SQLException e){
                 JOptionPane.showMessageDialog(rootPane, "Error Cambiando datos. " + e);
             }
         }
@@ -815,7 +841,7 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
 
     private void txtDemandadoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDemandadoKeyPressed
         if(KeyEvent.VK_ENTER == evt.getKeyCode()){
-            txtFiscalia.requestFocus();
+            txtDemandante.requestFocus();
         }
     }//GEN-LAST:event_txtDemandadoKeyPressed
 
@@ -836,6 +862,19 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
             txtArea.requestFocus();
         }
     }//GEN-LAST:event_txtCasoKeyPressed
+
+    private void txtDemandanteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDemandanteKeyPressed
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            txtFiscalia.requestFocus();
+        }
+    }//GEN-LAST:event_txtDemandanteKeyPressed
+
+    private void txtNumeroPaqueteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroPaqueteKeyPressed
+        // TODO add your handling code here:
+        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+            txtLugar.requestFocus();
+        }
+    }//GEN-LAST:event_txtNumeroPaqueteKeyPressed
 
     /**
      * @param args the command line arguments
@@ -867,7 +906,12 @@ public final class dialogMinisterioPublico extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialogMinisterioPublico dialog = new dialogMinisterioPublico(new javax.swing.JFrame(), true);
+                dialogMinisterioPublico dialog = null;
+                try {
+                    dialog = new dialogMinisterioPublico(new javax.swing.JFrame(), true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(dialogMinisterioPublico.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
